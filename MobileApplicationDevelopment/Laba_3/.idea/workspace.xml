@@ -58,24 +58,25 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Task_1_IO" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\slava\Documents\GitHub\Education_ITMO\MobileApplicationDevelopment\Laba_3\src\Task_1_IO" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Task_2_Multithreading" />
+      <recent name="Task_1_IO" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\slava\Documents\GitHub\Education_ITMO\MobileApplicationDevelopment\Laba_3\src\Task_1_IO" />
       <recent name="C:\Users\slava\Documents\GitHub\Education_ITMO\MobileApplicationDevelopment\Laba_3\src" />
     </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="Task_1_IO" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\slava\Documents\GitHub\Education_ITMO\MobileApplicationDevelopment\Laba_3\src\Task_1_IO" />
-    </key>
   </component>
-  <component name="RunManager" selected="Application.A7_SearchAnyCriterion">
-    <configuration name="A1_ReadFileAndWriteArrayOfString" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Task_1_IO.A1_ReadFileAndWriteArrayOfString" />
+  <component name="RunManager" selected="Application.A3_100threadsCount1000">
+    <configuration name="A1_10threadsCountFrom0To100" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Task_2_Multithreading.A1_10threadsCountFrom0To100" />
       <module name="Laba_3" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Task_1_IO.*" />
+          <option name="PATTERN" value="Task_2_Multithreading.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -83,12 +84,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="A4_CopyByte" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Task_1_IO.A4_CopyByte" />
+    <configuration name="A2_CheckThreadsState" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Task_2_Multithreading.A2_CheckThreadsState" />
       <module name="Laba_3" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Task_1_IO.*" />
+          <option name="PATTERN" value="Task_2_Multithreading.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -96,12 +97,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="A5_SearchStringInFileName" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Task_1_IO.A5_SearchStringInFileName" />
+    <configuration name="A3_100threadsCount1000" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Task_2_Multithreading.A3_100threadsCount1000" />
       <module name="Laba_3" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Task_1_IO.*" />
+          <option name="PATTERN" value="Task_2_Multithreading.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -148,24 +149,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.A3_100threadsCount1000" />
         <item itemvalue="Application.A7_SearchAnyCriterion" />
+        <item itemvalue="Application.A2_CheckThreadsState" />
+        <item itemvalue="Application.A1_10threadsCountFrom0To100" />
         <item itemvalue="Application.A6_SearchStringInFile" />
-        <item itemvalue="Application.A1_ReadFileAndWriteArrayOfString" />
-        <item itemvalue="Application.A5_SearchStringInFileName" />
-        <item itemvalue="Application.A4_CopyByte" />
       </list>
     </recent_temporary>
   </component>
@@ -178,6 +181,7 @@
       <option name="presentableId" value="Default" />
       <updated>1602506334175</updated>
       <workItem from="1602506335632" duration="19294000" />
+      <workItem from="1602608160485" duration="8199000" />
     </task>
     <servers />
   </component>
@@ -194,6 +198,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="712" y="344" key="#Notifications" timestamp="1602506837687">
@@ -204,46 +209,50 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="828" y="178" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602514403725" />
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1602617404477">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1602617404477" />
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1602507502130">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602507502130" />
-    <state x="690" y="267" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1602532077373">
+    <state x="690" y="267" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1602609337291">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="267" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602532077373" />
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1602533161865">
+    <state x="690" y="267" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602609337291" />
+    <state width="1877" height="284" key="GridCell.Tab.0.bottom" timestamp="1602618922028">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602533161865" />
-    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1602533161865">
+    <state width="1877" height="284" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602618922028" />
+    <state width="1877" height="284" key="GridCell.Tab.0.center" timestamp="1602618922028">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602533161865" />
-    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1602533161865">
+    <state width="1877" height="284" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602618922028" />
+    <state width="1877" height="284" key="GridCell.Tab.0.left" timestamp="1602618922028">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602533161865" />
-    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1602533161865">
+    <state width="1877" height="284" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602618922028" />
+    <state width="1877" height="284" key="GridCell.Tab.0.right" timestamp="1602618922028">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602533161865" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1602533161865">
+    <state width="1877" height="284" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602618922028" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1602617933158">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602533161865" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1602533161865">
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602617933158" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1602617933158">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602533161865" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1602533161865">
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602617933158" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1602617933158">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602533161865" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1602533161865">
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602617933158" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1602617933158">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602533161865" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602617933158" />
     <state width="968" height="528" key="XDebugger.FullValuePopup" timestamp="1602527342766">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -256,6 +265,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="499" y="256" width="922" height="629" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1040@0.0.1920.1040" timestamp="1602525892038" />
+    <state x="660" y="277" key="refactoring.ChangeSignatureDialog" timestamp="1602617447838">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="660" y="277" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602617447838" />
     <state x="1096" y="242" key="run.anything.popup" timestamp="1602518165369">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
