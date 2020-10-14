@@ -4,8 +4,8 @@ import java.io.*;
 
 public class A4_CopyByte {
     public static void main(String[] args) throws IOException {
-        File fileName1 = new File("C:\\Users\\slava\\Documents\\GitHub\\Education_ITMO\\MobileApplicationDevelopment\\Laba_3\\src\\Task_1_IO\\testfile1.txt");
-        File fileName3 = new File("C:\\Users\\slava\\Documents\\GitHub\\Education_ITMO\\MobileApplicationDevelopment\\Laba_3\\src\\Task_1_IO\\testfile3.txt");
+        File fileName1 = new File("C:\\Users\\Acer\\Documents\\GitHub\\Education_ITMO\\MobileApplicationDevelopment\\Laba_3\\src\\Task_1_IO\\testfile1.txt");
+        File fileName3 = new File("C:\\Users\\Acer\\Documents\\GitHub\\Education_ITMO\\MobileApplicationDevelopment\\Laba_3\\src\\Task_1_IO\\testfile3.txt");
         getByteCopyTime(fileName1, fileName3);
     }
 

@@ -8,7 +8,7 @@ import java.util.*;
 
 public class A6_SearchStringInFile {
     public static void main(String[] args) {
-        String pathToFile = "C:\\Users\\slava\\Documents\\GitHub\\Education_ITMO\\MobileApplicationDevelopment\\Laba_3\\src\\Task_1_IO";
+        String pathToFile = "C:\\Users\\Acer\\Documents\\GitHub\\Education_ITMO\\MobileApplicationDevelopment\\Laba_3\\src\\Task_1_IO";
         String findingSymbols = "!";
         find(Path.of(pathToFile), findingSymbols);
     }

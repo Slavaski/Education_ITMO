@@ -4,7 +4,7 @@ import java.io.*;
 
 public class A1_ReadFileAndWriteArrayOfString {
     public static void main(String[] args) {
-        String fileName = "C:\\Users\\slava\\Documents\\GitHub\\Education_ITMO\\MobileApplicationDevelopment\\Laba_3\\src\\Task_1_IO\\testfile1.txt";
+        String fileName = "C:\\Users\\Acer\\Documents\\GitHub\\Education_ITMO\\MobileApplicationDevelopment\\Laba_3\\src\\Task_1_IO\\testfile1.txt";
         String textFromFile = read(fileName);
         System.out.println(textFromFile);
     }

@@ -4,7 +4,7 @@ import java.io.File;
 
 public class A5_SearchStringInFileName {
     public static void main(String[] args) {
-        String filesPath = "C:\\Users\\slava\\Documents\\GitHub\\Education_ITMO\\MobileApplicationDevelopment\\Laba_3\\src\\Task_1_IO\\";
+        String filesPath = "C:\\Users\\Acer\\Documents\\GitHub\\Education_ITMO\\MobileApplicationDevelopment\\Laba_3\\src\\Task_1_IO\\";
         String findingSymbols = "3";
         find(filesPath, findingSymbols);
     }
