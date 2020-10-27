@@ -6,7 +6,7 @@ public class A1_10threadsCountFrom0To100 {
             int finalJ = j;
             Thread myThready = new Thread(new Runnable() {
                 public void run() {
-                    for (int i = 0; i < 100; i++) {
+                    for (int i = 0; i < 10; i++) {
                         System.out.println(finalJ + " thread: " + (i + 1));
                     }
                 }

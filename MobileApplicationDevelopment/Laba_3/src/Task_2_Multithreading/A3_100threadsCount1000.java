@@ -18,7 +18,7 @@ public class A3_100threadsCount1000 {
             myThready.start();
         }
         try {
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

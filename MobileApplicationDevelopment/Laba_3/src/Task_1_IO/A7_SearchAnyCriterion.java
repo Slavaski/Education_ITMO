@@ -7,7 +7,7 @@ import java.util.function.Function;
 
 public class A7_SearchAnyCriterion {
     public static void main(String[] args) {
-        List<File> list = getFiles("C:\\Users\\slava\\Documents\\GitHub\\Education_ITMO\\MobileApplicationDevelopment\\Laba_3\\src\\Task_1_IO", new Function<File, File>() {
+        List<File> list = getFiles("C:\\Users\\Acer\\Documents\\GitHub\\Education_ITMO\\MobileApplicationDevelopment\\Laba_3\\src\\Task_1_IO", new Function<File, File>() {
             @Override
             public File apply(File file) {
                 if(file.getName().endsWith(".txt"))
