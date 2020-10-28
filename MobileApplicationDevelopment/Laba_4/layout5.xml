@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+=======
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+>>>>>>> ae1168ec7b82e2eca94f2297e4e9d98e327e948c
         <TextView
             android:id="@+id/Sign"
             android:layout_width="wrap_content"
@@ -31,6 +44,10 @@
             android:layout_alignBottom="@+id/password"
             android:layout_alignParentStart="true"
             android:layout_marginStart="40dp"
+<<<<<<< HEAD
+=======
+            android:layout_marginBottom="0dp"
+>>>>>>> ae1168ec7b82e2eca94f2297e4e9d98e327e948c
             android:text="Password" />
 
         <EditText
@@ -39,6 +56,11 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/Login"
             android:layout_alignParentEnd="true"
+<<<<<<< HEAD
+=======
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+>>>>>>> ae1168ec7b82e2eca94f2297e4e9d98e327e948c
             android:ems="10"
             android:hint="Enter login"
             android:inputType="textPersonName" />
@@ -49,6 +71,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/login"
             android:layout_alignParentEnd="true"
+<<<<<<< HEAD
+=======
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+>>>>>>> ae1168ec7b82e2eca94f2297e4e9d98e327e948c
             android:ems="10"
             android:hint="Enter password"
             android:inputType="textPassword" />
@@ -60,7 +87,16 @@
             android:layout_below="@+id/password"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="30dp"
+<<<<<<< HEAD
             android:text="Sign in" />
 
 
 </RelativeLayout>
+=======
+            android:layout_marginEnd="0dp"
+            android:text="Sign in" />
+
+    </RelativeLayout>
+
+</LinearLayout>
+>>>>>>> ae1168ec7b82e2eca94f2297e4e9d98e327e948c

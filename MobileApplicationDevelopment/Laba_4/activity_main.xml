@@ -5,28 +5,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
+<<<<<<< HEAD
     android:orientation="vertical"
     android:gravity="center">
+=======
+    android:orientation="vertical">
+>>>>>>> ae1168ec7b82e2eca94f2297e4e9d98e327e948c
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="00:00:00"
+<<<<<<< HEAD
         android:textSize="90sp"/>
+=======
+        android:textSize="90sp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="200dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"/>
+>>>>>>> ae1168ec7b82e2eca94f2297e4e9d98e327e948c
 
     <Button
         android:layout_width="200dp"
         android:layout_height="70dp"
+<<<<<<< HEAD
         android:text="START"/>
+=======
+        android:text="START"
+        android:layout_marginStart="100dp"/>
+>>>>>>> ae1168ec7b82e2eca94f2297e4e9d98e327e948c
 
     <Button
         android:layout_width="200dp"
         android:layout_height="70dp"
+<<<<<<< HEAD
         android:text="STOP"/>
+=======
+        android:text="STOP"
+        android:layout_marginStart="100dp"/>
+>>>>>>> ae1168ec7b82e2eca94f2297e4e9d98e327e948c
 
     <Button
         android:layout_width="200dp"
         android:layout_height="70dp"
+<<<<<<< HEAD
         android:text="RESET"/>
+=======
+        android:text="RESET"
+        android:layout_marginStart="100dp"/>
+>>>>>>> ae1168ec7b82e2eca94f2297e4e9d98e327e948c
 
 </LinearLayout>
