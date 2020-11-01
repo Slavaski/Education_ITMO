@@ -7,18 +7,28 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class ControllerTestsWindow extends Main {
+public class ControllerTestsWindow extends ControllerAuthWindow {
 
     @FXML
-    public JFXButton TestsButton;
+    private Button MainButton;
 
     @FXML
-    public JFXButton HelpButton;
+    private Text UserEmail;
 
     @FXML
-    public JFXButton TestResultsButton;
+    private JFXButton TestsButton;
+
+    @FXML
+    private JFXButton HelpButton;
+
+    @FXML
+    private JFXButton TestResultsButton;
+
+    @FXML
+    private JFXButton TestButton;
 
     @FXML
     private MenuItem testsLangRus;
@@ -37,12 +47,12 @@ public class ControllerTestsWindow extends Main {
 
     @FXML
     void initialize() {
+        UserEmail.setText(login);
         LogoutButton.setOnAction(event -> logout(LogoutButton.getScene().getWindow()));
-
         TestsButton.setOnAction(event -> goToTests(TestsButton.getScene().getWindow()));
-
         HelpButton.setOnAction(event -> goToHelp(HelpButton.getScene().getWindow()));
-
         TestResultsButton.setOnAction(event -> goToTestResults(TestResultsButton.getScene().getWindow()));
+        MainButton.setOnAction(event -> goToMain(MainButton.getScene().getWindow()));
+        TestButton.setOnAction(event -> goToQuestions(TestButton.getScene().getWindow()));
     }
 }

@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.sun.tools.javac.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +16,10 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class ControllerMainWindow extends Main {
+public class ControllerMainWindow extends ControllerAuthWindow {
+
+    @FXML
+    private Button MainButton;
 
     @FXML
     private MenuItem mainThemeLight;
@@ -52,6 +56,7 @@ public class ControllerMainWindow extends Main {
 
     @FXML
     void initialize() {
+        UserEmail.setText(login);
         mainMain.setLineSpacing(1.0);
         mainMain.setWrappingWidth(1000);
         mainHeader.setText("Приветствуем!");
@@ -70,5 +75,7 @@ public class ControllerMainWindow extends Main {
         HelpButton.setOnAction(event -> goToHelp(HelpButton.getScene().getWindow()));
 
         TestResultsButton.setOnAction(event -> goToTestResults(TestResultsButton.getScene().getWindow()));
+
+        MainButton.setOnAction(event -> goToMain(MainButton.getScene().getWindow()));
     }
 }

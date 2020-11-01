@@ -18,7 +18,7 @@
    <children>
       <MenuBar style="-fx-background-color: #ffffff;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <menus>
-            <Menu mnemonicParsing="false" text="Language">
+            <Menu mnemonicParsing="false" text="Язык">
                <items>
                   <MenuItem fx:id="questionLangRus" mnemonicParsing="false" text="Русский"/>
                   <MenuItem fx:id="questionLangEng" mnemonicParsing="false" text="English"/>

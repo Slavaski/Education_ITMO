@@ -11,7 +11,7 @@ import okhttp3.*;
 
 import java.io.IOException;
 
-public class ControllerAuthWindow {
+public class ControllerAuthWindow extends Main {
     @FXML
     private MenuItem loginThemeDark;
 
@@ -25,7 +25,7 @@ public class ControllerAuthWindow {
     private MenuItem loginLangEng;
 
     @FXML
-    private TextField Login;
+    protected TextField Login;
 
     @FXML
     private PasswordField Password;
@@ -40,6 +40,7 @@ public class ControllerAuthWindow {
     void initialize() {
         EnterButton.setOnAction(event -> {
             if (Login.getText().contains("@")) {
+                login= Login.getText().trim();
                 OkHttpClient client = new OkHttpClient();
                 Request request = new Request.Builder().url("https://flaskprojecttest.herokuapp.com/api/token").addHeader("Authorization", Credentials.basic(Login.getText().trim(), Password.getText().trim())).get().build();
                 Call call = client.newCall(request);

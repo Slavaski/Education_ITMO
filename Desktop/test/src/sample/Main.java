@@ -10,6 +10,8 @@ import javafx.stage.Window;
 import java.io.IOException;
 
 public class Main extends Application {
+    protected static String login="example@exapmle.com";
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("windowAuth.fxml"));
@@ -34,8 +36,26 @@ public class Main extends Application {
         stage.setScene(new Scene(root));
         stage.show();
         windowToHide.hide();
-        stage.setTitle("Test"); //@todo дополнить название, указывая доп окно
+        stage.setTitle("Test - Authorization");
         stage.setResizable(false);
+    }
+
+    protected void goToMain(Window windowToHide) {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("windowMain.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+        windowToHide.hide();
+        stage.setTitle("Test - Main window");
+        stage.setResizable(false);
+        stage.setMaximized(true);
     }
 
     protected void goToHelp(Window windowToHide) {
@@ -51,8 +71,9 @@ public class Main extends Application {
         stage.setScene(new Scene(root));
         stage.show();
         windowToHide.hide();
-        stage.setTitle("Test"); //@todo дополнить название, указывая доп окно
+        stage.setTitle("Test - Help");
         stage.setResizable(false);
+        stage.setMaximized(true);
     }
 
     protected void goToTests(Window windowToHide) {
@@ -68,8 +89,27 @@ public class Main extends Application {
         stage.setScene(new Scene(root));
         stage.show();
         windowToHide.hide();
-        stage.setTitle("Test"); //@todo дополнить название, указывая доп окно
+        stage.setTitle("Test - Tests");
         stage.setResizable(false);
+        stage.setMaximized(true);
+    }
+
+    protected void goToQuestions(Window windowToHide) {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("window1Question.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+        windowToHide.hide();
+        stage.setTitle("Test - Questions");
+        stage.setResizable(false);
+        stage.setMaximized(true);
     }
 
     protected void goToTestResults(Window windowToHide) {
@@ -85,8 +125,9 @@ public class Main extends Application {
         stage.setScene(new Scene(root));
         stage.show();
         windowToHide.hide();
-        stage.setTitle("Test"); //@todo дополнить название, указывая доп окно
+        stage.setTitle("Test - Test results");
         stage.setResizable(false);
+        stage.setMaximized(true);
     }
 
     public static void main(String[] args) {
