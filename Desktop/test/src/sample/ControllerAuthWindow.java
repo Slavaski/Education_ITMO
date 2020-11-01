@@ -1,7 +1,6 @@
 package sample;
 
 import com.jfoenix.controls.JFXButton;
-import javafx.beans.property.ReadOnlySetProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,15 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import okhttp3.*;
-import org.apache.hc.client5.http.classic.methods.HttpGet;
-import org.apache.hc.client5.http.classic.methods.HttpPost;
-import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
-import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
-import org.apache.hc.client5.http.impl.classic.HttpClients;
-import org.apache.hc.core5.http.HttpResponse;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 public class ControllerAuthWindow {
     @FXML
@@ -49,10 +41,7 @@ public class ControllerAuthWindow {
         EnterButton.setOnAction(event -> {
             if (Login.getText().contains("@")) {
                 OkHttpClient client = new OkHttpClient();
-                Request request = new Request.Builder()//test1@mail.ru lwelStcmd
-                        .url("https://flaskprojecttest.herokuapp.com/api/token")
-                        .addHeader("Authorization", Credentials.basic(Login.getText().trim(), Password.getText().trim()))
-                        .get().build();
+                Request request = new Request.Builder().url("https://flaskprojecttest.herokuapp.com/api/token").addHeader("Authorization", Credentials.basic(Login.getText().trim(), Password.getText().trim())).get().build();
                 Call call = client.newCall(request);
                 Response response = null;
                 try {
@@ -62,9 +51,7 @@ public class ControllerAuthWindow {
                 }
                 assert response != null;
                 if (response.isSuccessful()) {
-
                     EnterButton.getScene().getWindow().hide();
-
                     FXMLLoader loader = new FXMLLoader();
                     loader.setLocation(getClass().getResource("windowMain.fxml"));
                     try {
@@ -89,7 +76,8 @@ public class ControllerAuthWindow {
                     badResponse.setHeaderText("");
                     badResponse.show();
                     badResponse.setResizable(false);
-                    badResponse.setY(200.0);}
+                    badResponse.setY(200.0);
+                }
             } else {
                 Alert badLogin = new Alert(Alert.AlertType.ERROR);
                 badLogin.setContentText("Логин должен содержать символ '@'.");
