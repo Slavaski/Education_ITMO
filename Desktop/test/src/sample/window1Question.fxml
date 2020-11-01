@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="795.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerTestWindow">
+   <children>
+      <MenuBar style="-fx-background-color: #ffffff;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="Language">
+               <items>
+                  <MenuItem fx:id="questionLangRus" mnemonicParsing="false" text="Русский"/>
+                  <MenuItem fx:id="questionLangEng" mnemonicParsing="false" text="English"/>
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Тема">
+               <items>
+                  <MenuItem fx:id="questionThemeLight" mnemonicParsing="false" text="Светлая"/>
+                  <MenuItem fx:id="questionThemeDark" mnemonicParsing="false" text="Темная"/>
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <SplitPane layoutX="146.0" layoutY="114.0" prefHeight="436.0" prefWidth="795.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="114.0">
+         <items>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="456.0" prefWidth="785.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <ScrollPane layoutX="280.0" layoutY="136.0" prefHeight="463.0" prefWidth="785.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <content>
+                      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="900.0" prefWidth="1640.0" style="-fx-background-color: #ffffff;">
+                           <children>
+                              <Line endX="2536.6435546875" endY="1.52587890625E-5" layoutX="-989.0" layoutY="98.0" startX="1063.7889404296875" startY="1.52587890625E-5" stroke="#eaeaea" />
+                              <Text fx:id="question" fill="#242424" layoutX="85.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Какой режим аутентификации поддерживает утилита AlarmDB Logger?">
+                                 <font>
+                                    <Font name="Roboto Medium" size="18.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="testName" fill="#2d3e50" layoutX="85.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sibintek test" wrappingWidth="248.03904724121082">
+                                 <font>
+                                    <Font name="Bebas Neue Regular" size="36.0" />
+                                 </font>
+                              </Text>
+                              <JFXRadioButton graphicTextGap="5.0" layoutX="104.0" layoutY="191.0" style="-jfx-selected-color: #006fb7; -jfx-unselected-color: #a3a3a3;" text="Только MS SQL Server аутентификацию" textFill="#242424">
+                                 <font>
+                                    <Font name="Roboto Medium" size="18.0" />
+                                 </font>
+                              </JFXRadioButton>
+                              <JFXRadioButton graphicTextGap="5.0" layoutX="104.0" layoutY="219.0" style="-jfx-selected-color: #006fb7; -jfx-unselected-color: #a3a3a3;" text="Только OS Windows аутентификацию" textFill="#242424">
+                                 <font>
+                                    <Font name="Roboto Medium" size="18.0" />
+                                 </font>
+                              </JFXRadioButton>
+                              <JFXRadioButton graphicTextGap="5.0" layoutX="104.0" layoutY="247.0" style="-jfx-selected-color: #006fb7; -jfx-unselected-color: #a3a3a3;" text="InTouch и MS SQL Server аутентификацию" textFill="#242424">
+                                 <font>
+                                    <Font name="Roboto Medium" size="18.0" />
+                                 </font>
+                              </JFXRadioButton>
+                              <JFXRadioButton graphicTextGap="5.0" layoutX="104.0" layoutY="275.0" style="-jfx-selected-color: #006fb7; -jfx-unselected-color: #a3a3a3;" text="MS SQL Server и OS Windows аутентификацию" textFill="#242424">
+                                 <font>
+                                    <Font name="Roboto Medium" size="18.0" />
+                                 </font>
+                              </JFXRadioButton>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+               </children></AnchorPane>
+         </items>
+      </SplitPane>
+      <JFXButton fx:id="nextQuestionButton" contentDisplay="GRAPHIC_ONLY" layoutX="743.4909106344428" layoutY="114.0" prefHeight="420.0" prefWidth="44.0" style="-fx-background-color: #006fb7;" AnchorPane.bottomAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="114.0">
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/baseline_arrow_forward_ios_white_18dp.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <ImageView fitHeight="47.0" fitWidth="161.0" layoutX="28.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/AVEVA_logo.png" />
+         </image>
+      </ImageView>
+      <Line endX="1772.28564453125" endY="1.52587890625E-5" layoutX="-7.0" layoutY="27.0" startX="-55.0000114440918" stroke="#eaeaea" />
+      <Text fx:id="email" fill="#242424" layoutX="626.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserEmail@gmail.com" AnchorPane.rightAnchor="44.75398254394531">
+         <font>
+            <Font name="Roboto Medium" size="13.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

@@ -1,20 +1,27 @@
 package sample;
 
 import com.jfoenix.controls.JFXButton;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
-public class ControllerMainWindow {
-
-    @FXML
-    private ResourceBundle resources;
+public class ControllerMainWindow extends Main {
 
     @FXML
-    private URL location;
+    private MenuItem mainThemeLight;
+
+    @FXML
+    private MenuItem mainThemeDark;
 
     @FXML
     private Text mainHeader;
@@ -29,35 +36,39 @@ public class ControllerMainWindow {
     private MenuItem mainLangEng;
 
     @FXML
-    private JFXButton mainTest;
+    private JFXButton TestsButton;
 
     @FXML
-    private JFXButton mainTestResults;
+    private JFXButton TestResultsButton;
 
     @FXML
-    private JFXButton mainSettings;
+    private JFXButton HelpButton;
 
     @FXML
-    private JFXButton mainHelp;
+    private Text UserEmail;
 
     @FXML
-    private Text mainUserEmail;
-
-    @FXML
-    private Button mainLogout;
+    private Button LogoutButton;
 
     @FXML
     void initialize() {
-//        assert mainHeader != null : "fx:id=\"mainHeader\" was not injected: check your FXML file 'windowMain.fxml'.";
-//        assert mainMain != null : "fx:id=\"mainMain\" was not injected: check your FXML file 'windowMain.fxml'.";
-//        assert mainLangRus != null : "fx:id=\"mainLangRus\" was not injected: check your FXML file 'windowMain.fxml'.";
-//        assert mainLangEng != null : "fx:id=\"mainLangEng\" was not injected: check your FXML file 'windowMain.fxml'.";
-//        assert mainTest != null : "fx:id=\"mainTest\" was not injected: check your FXML file 'windowMain.fxml'.";
-//        assert mainTestResults != null : "fx:id=\"mainTestResults\" was not injected: check your FXML file 'windowMain.fxml'.";
-//        assert mainSettings != null : "fx:id=\"mainSettings\" was not injected: check your FXML file 'windowMain.fxml'.";
-//        assert mainHelp != null : "fx:id=\"mainHelp\" was not injected: check your FXML file 'windowMain.fxml'.";
-//        assert mainUserEmail != null : "fx:id=\"mainUserEmail\" was not injected: check your FXML file 'windowMain.fxml'.";
-//        assert mainLogout != null : "fx:id=\"mainLogout\" was not injected: check your FXML file 'windowMain.fxml'.";
+        mainMain.setLineSpacing(1.0);
+        mainMain.setWrappingWidth(1000);
+        mainHeader.setText("Приветствуем!");
+        mainMain.setText("   В данном приложении Вы можете пройти тестирования - раздел \"Прохождение тестов\", " +
+                "посмотреть свои результаты - раздел \"Результаты тестов\" и послать письмо разработчику.\n" +
+                "   Если в ходе работы были обнаружены проблемы, баги или присутствуют " +
+                "жалобы/пожелания по работе программы, перейдите в раздел \"Помощь\"->\"Письмо разработчику\", подробно изложите ситуацию и " +
+                "отправьте свое сообщение. Каждое сообщение будет рассмотрено.\n   Приятного и плодотворного пользования!");
 
+//        System.out.println("ПРОВЕРКИ: " + mainLangRus.isDisable());
+//        System.out.println(mainLangEng.isDisable()); оба false
+        LogoutButton.setOnAction(event -> logout(LogoutButton.getScene().getWindow()));
+
+        TestsButton.setOnAction(event -> goToTests(TestsButton.getScene().getWindow()));
+
+        HelpButton.setOnAction(event -> goToHelp(HelpButton.getScene().getWindow()));
+
+        TestResultsButton.setOnAction(event -> goToTestResults(TestResultsButton.getScene().getWindow()));
     }
 }

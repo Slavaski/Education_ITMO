@@ -1,22 +1,30 @@
 package sample;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.beans.property.ReadOnlySetProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import okhttp3.*;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.core5.http.HttpResponse;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 public class ControllerAuthWindow {
+    @FXML
+    private MenuItem loginThemeDark;
 
-//    @FXML
-//    private ResourceBundle resources;
-//
-//    @FXML
-//    private URL location;
+    @FXML
+    private MenuItem loginThemeLight;
 
     @FXML
     private MenuItem loginLangRus;
@@ -24,39 +32,38 @@ public class ControllerAuthWindow {
     @FXML
     private MenuItem loginLangEng;
 
-//    @FXML
-//    private Image loginLogo;
+    @FXML
+    private TextField Login;
 
     @FXML
-    private TextField loginLogin;
+    private PasswordField Password;
 
     @FXML
-    private PasswordField loginPassword;
+    private JFXButton EnterButton;
 
     @FXML
-    private JFXButton loginEnterButton;
-
-    @FXML
-    private JFXButton loginHelpButton;
-
-//    @FXML
-//    private Image loginHelpImg;
+    private JFXButton HelpButton;
 
     @FXML
     void initialize() {
-//        assert loginLangRus != null : "fx:id=\"loginLangRus\" was not injected: check your FXML file '3.fxml'.";
-//        assert loginLangEng != null : "fx:id=\"loginLangEng\" was not injected: check your FXML file '3.fxml'.";
-//        assert loginLogo != null : "fx:id=\"loginLogo\" was not injected: check your FXML file '3.fxml'.";
-//        assert loginLogin != null : "fx:id=\"loginLogin\" was not injected: check your FXML file '3.fxml'.";
-//        assert loginPassword != null : "fx:id=\"loginPassword\" was not injected: check your FXML file '3.fxml'.";
-//        assert loginEnterButton != null : "fx:id=\"loginEnterButton\" was not injected: check your FXML file '3.fxml'.";
-//        assert loginHelpButton != null : "fx:id=\"loginHelpButton\" was not injected: check your FXML file '3.fxml'.";
-//        assert loginHelpImg != null : "fx:id=\"loginHelpImg\" was not injected: check your FXML file '3.fxml'.";
-        loginEnterButton.setOnAction(event -> {
-            if (loginLogin.getText().length() == 5) {
-                if (loginPassword.getText().length() == 5) {
-                    System.out.println("Login: \"" + loginLogin.getText() + "\", password: \"" + loginPassword.getText() + "\".");
-                    loginEnterButton.getScene().getWindow().hide();
+        EnterButton.setOnAction(event -> {
+            if (Login.getText().contains("@")) {
+                OkHttpClient client = new OkHttpClient();
+                Request request = new Request.Builder()//test1@mail.ru lwelStcmd
+                        .url("https://flaskprojecttest.herokuapp.com/api/token")
+                        .addHeader("Authorization", Credentials.basic(Login.getText().trim(), Password.getText().trim()))
+                        .get().build();
+                Call call = client.newCall(request);
+                Response response = null;
+                try {
+                    response = call.execute();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                assert response != null;
+                if (response.isSuccessful()) {
+
+                    EnterButton.getScene().getWindow().hide();
 
                     FXMLLoader loader = new FXMLLoader();
                     loader.setLocation(getClass().getResource("windowMain.fxml"));
@@ -68,19 +75,24 @@ public class ControllerAuthWindow {
                     Parent root = loader.getRoot();
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
-                    stage.showAndWait();
+                    stage.show();
+                    stage.setTitle("Test");
+                    stage.setMaximized(true);
+                    stage.setResizable(false);
+                    stage.setMinWidth(795);
+                    stage.setMinHeight(500);
+                    //@todo вынести в отдельную функцию
                 } else {
-                    Alert badPassword = new Alert(Alert.AlertType.ERROR);
-                    badPassword.setContentText("Пароль должен состоять из 5 символов.");
-                    badPassword.setTitle("Ошибка в пароле");
-                    badPassword.setHeaderText("");
-                    badPassword.show();
-                    badPassword.setResizable(false);
-                    badPassword.setY(200.0);
-                }
+                    Alert badResponse = new Alert(Alert.AlertType.ERROR);
+                    badResponse.setContentText("Пара логин-пароль не подходит.");
+                    badResponse.setTitle("Ошибка авторизации");
+                    badResponse.setHeaderText("");
+                    badResponse.show();
+                    badResponse.setResizable(false);
+                    badResponse.setY(200.0);}
             } else {
                 Alert badLogin = new Alert(Alert.AlertType.ERROR);
-                badLogin.setContentText("Логин должен состоять из 5 символов.");
+                badLogin.setContentText("Логин должен содержать символ '@'.");
                 badLogin.setTitle("Ошибка в логине");
                 badLogin.setHeaderText("");
                 badLogin.show();
@@ -88,7 +100,7 @@ public class ControllerAuthWindow {
                 badLogin.setY(200.0);
             }
         });
-        loginHelpButton.setOnAction(event -> {
+        HelpButton.setOnAction(event -> {
             Alert a = new Alert(Alert.AlertType.INFORMATION);
             a.setContentText("Если у Вас нет логина или пароля, обратитесь к Модератору. Функции изменения логина или пароля не предусмотрено, поэтому не теряйте и не забывайте личные данные для авторизации. После добавления Вас в систему для полноценного и правильного функционирования следует подождать 2 рабочих дня.");
             a.setTitle("Помощь");
