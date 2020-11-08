@@ -1,0 +1,9 @@
+@font-face {
+    src: url('Roboto-Medium.ttf');
+}
+
+.column-header-label {
+    -fx-label-padding: 0;
+    -fx-text-overrun: clip;
+    -fx-font-family: 'Roboto Medium';
+}

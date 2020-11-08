@@ -40,7 +40,7 @@ public class ControllerAuthWindow extends Main {
     void initialize() {
         EnterButton.setOnAction(event -> {
             if (Login.getText().contains("@")) {
-                login= Login.getText().trim();
+                login = Login.getText().trim();
                 OkHttpClient client = new OkHttpClient();
                 Request request = new Request.Builder().url("https://flaskprojecttest.herokuapp.com/api/token").addHeader("Authorization", Credentials.basic(Login.getText().trim(), Password.getText().trim())).get().build();
                 Call call = client.newCall(request);
@@ -50,35 +50,36 @@ public class ControllerAuthWindow extends Main {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                assert response != null;
-                if (response.isSuccessful()) {
-                    EnterButton.getScene().getWindow().hide();
-                    FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource("windowMain.fxml"));
-                    try {
-                        loader.load();
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                if (response != null) {
+                    if (response.isSuccessful()) {
+                        EnterButton.getScene().getWindow().hide();
+                        FXMLLoader loader = new FXMLLoader();
+                        loader.setLocation(getClass().getResource("windowMain.fxml"));
+                        try {
+                            loader.load();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        Parent root = loader.getRoot();
+                        Stage stage = new Stage();
+                        stage.setScene(new Scene(root));
+                        stage.show();
+                        stage.setTitle("Test");
+                        stage.setMaximized(true);
+                        stage.setResizable(false);
+                        stage.setMinWidth(795);
+                        stage.setMinHeight(500);
+                        //@todo вынести в отдельную функцию
+                    } else {
+                        Alert badResponse = new Alert(Alert.AlertType.ERROR);
+                        badResponse.setContentText("Пара логин-пароль не подходит.");
+                        badResponse.setTitle("Ошибка авторизации");
+                        badResponse.setHeaderText("");
+                        badResponse.show();
+                        badResponse.setResizable(false);
+                        badResponse.setY(200.0);
                     }
-                    Parent root = loader.getRoot();
-                    Stage stage = new Stage();
-                    stage.setScene(new Scene(root));
-                    stage.show();
-                    stage.setTitle("Test");
-                    stage.setMaximized(true);
-                    stage.setResizable(false);
-                    stage.setMinWidth(795);
-                    stage.setMinHeight(500);
-                    //@todo вынести в отдельную функцию
-                } else {
-                    Alert badResponse = new Alert(Alert.AlertType.ERROR);
-                    badResponse.setContentText("Пара логин-пароль не подходит.");
-                    badResponse.setTitle("Ошибка авторизации");
-                    badResponse.setHeaderText("");
-                    badResponse.show();
-                    badResponse.setResizable(false);
-                    badResponse.setY(200.0);
-                }
+                } else System.out.println("response is null");
             } else {
                 Alert badLogin = new Alert(Alert.AlertType.ERROR);
                 badLogin.setContentText("Логин должен содержать символ '@'.");

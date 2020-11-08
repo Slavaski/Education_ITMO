@@ -62,22 +62,22 @@
 				</AnchorPane>
 				<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="422.0" prefWidth="570.0" style="-fx-background-color: #ffffff;">
 					<children>
-						<ScrollPane layoutX="-2.0" prefHeight="435.0" prefWidth="571.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="-0.0" AnchorPane.leftAnchor="-1.7454544849238118" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-0.8727272424619059">
+						<ScrollPane fitToWidth="true" layoutX="-2.0" prefHeight="435.0" prefWidth="571.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="-0.0" AnchorPane.leftAnchor="-1.7454544849238118" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-0.8727272424619059">
 							<content>
-								<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="963.0" prefWidth="1662.0" style="-fx-background-color: #ffffff;">
+								<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="963.0" prefWidth="900.0" style="-fx-background-color: #ffffff;">
 									<children>
-										<Line endX="2558.02001953125" endY="1.52587890625E-5" layoutX="-1001.0" layoutY="97.0" startX="1063.7889404296875" startY="1.52587890625E-5" stroke="#eaeaea" />
+										<Line endX="1963.0" endY="1.52587890625E-5" layoutX="-1001.0" layoutY="97.0" startX="1063.0" startY="1.52587890625E-5" stroke="#eaeaea" />
 										<Text fill="#2d3e50" layoutX="73.0" layoutY="87.84765625" strokeType="OUTSIDE" strokeWidth="0.0" text="Доступные тесты" wrappingWidth="290.0" AnchorPane.leftAnchor="73.0" AnchorPane.topAnchor="49.0">
 											<font>
 												<Font name="Bebas Neue Regular" size="36.0" />
 											</font>
 										</Text>
-										<Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="193.0" layoutX="62.0" layoutY="148.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1116.0">
+										<Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="193.0" layoutX="62.0" layoutY="148.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="900.0">
 											<effect>
 												<DropShadow color="#9c9c9c60" />
 											</effect>
 										</Rectangle>
-										<Rectangle arcHeight="5.0" arcWidth="5.0" fill="#006fb7" height="36.0" layoutX="62.0" layoutY="148.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1116.0" />
+										<Rectangle arcHeight="5.0" arcWidth="5.0" fill="#006fb7" height="36.0" layoutX="62.0" layoutY="148.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="900.0" />
 										<Text fill="#2d3e50" layoutX="96.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="тест 1" wrappingWidth="248.03904724121082">
 											<font>
 												<Font name="Bebas Neue Regular" size="24.0" />
@@ -93,17 +93,17 @@
 												<Font name="Roboto Medium" size="13.0" />
 											</font>
 										</Text>
-										<JFXButton fx:id="TestButton" layoutX="963.0" layoutY="245.0" prefHeight="30.0" prefWidth="167.0" style="-fx-background-color: #f07d00;" text="Перейти к тесту" textFill="WHITE">
+										<JFXButton fx:id="TestButton" layoutX="753.0" layoutY="245.0" prefHeight="30.0" prefWidth="167.0" style="-fx-background-color: #f07d00;" text="Перейти к тесту" textFill="WHITE">
 											<font>
 												<Font name="Roboto Medium" size="13.0" />
 											</font>
 										</JFXButton>
-										<Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="193.0" layoutX="62.0" layoutY="375.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1116.0">
+										<Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="193.0" layoutX="62.0" layoutY="375.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="900.0">
 											<effect>
 												<DropShadow color="#9c9c9c60" />
 											</effect>
 										</Rectangle>
-										<Rectangle arcHeight="5.0" arcWidth="5.0" fill="#006fb7" height="36.0" layoutX="62.0" layoutY="375.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1116.0" />
+										<Rectangle arcHeight="5.0" arcWidth="5.0" fill="#006fb7" height="36.0" layoutX="62.0" layoutY="375.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="900.0" />
 										<Text fill="#2d3e50" layoutX="96.0" layoutY="481.0" strokeType="OUTSIDE" strokeWidth="0.0" text="тест 2" wrappingWidth="248.03904724121082">
 											<font>
 												<Font name="Bebas Neue Regular" size="24.0" />
@@ -119,17 +119,17 @@
 												<Font name="Roboto Medium" size="13.0" />
 											</font>
 										</Text>
-										<JFXButton layoutX="963.0" layoutY="472.0" prefHeight="30.0" prefWidth="167.0" style="-fx-background-color: #f07d00;" text="Перейти к тесту" textFill="WHITE">
+										<JFXButton layoutX="753.0" layoutY="472.0" prefHeight="30.0" prefWidth="167.0" style="-fx-background-color: #f07d00;" text="Перейти к тесту" textFill="WHITE">
 											<font>
 												<Font name="Roboto Medium" size="13.0" />
 											</font>
 										</JFXButton>
-										<Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="193.0" layoutX="62.0" layoutY="602.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1116.0">
+										<Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="193.0" layoutX="62.0" layoutY="602.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="900.0">
 											<effect>
 												<DropShadow color="#9c9c9c60" />
 											</effect>
 										</Rectangle>
-										<Rectangle arcHeight="5.0" arcWidth="5.0" fill="#006fb7" height="36.0" layoutX="62.0" layoutY="602.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1116.0" />
+										<Rectangle arcHeight="5.0" arcWidth="5.0" fill="#006fb7" height="36.0" layoutX="62.0" layoutY="602.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="900.0" />
 										<Text fill="#2d3e50" layoutX="96.0" layoutY="708.0" strokeType="OUTSIDE" strokeWidth="0.0" text="тест 3" wrappingWidth="248.03904724121082">
 											<font>
 												<Font name="Bebas Neue Regular" size="24.0" />
@@ -145,7 +145,7 @@
 												<Font name="Roboto Medium" size="13.0" />
 											</font>
 										</Text>
-										<JFXButton layoutX="963.0" layoutY="699.0" prefHeight="30.0" prefWidth="167.0" style="-fx-background-color: #f07d00;" text="Перейти к тесту" textFill="WHITE">
+										<JFXButton layoutX="753.0" layoutY="699.0" prefHeight="30.0" prefWidth="167.0" style="-fx-background-color: #f07d00;" text="Перейти к тесту" textFill="WHITE">
 											<font>
 												<Font name="Roboto Medium" size="13.0" />
 											</font>

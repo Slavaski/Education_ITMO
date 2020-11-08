@@ -1,0 +1,9 @@
+@font-face {
+    src: url('BebasNeue.ttf');
+}
+
+.column-header-label {
+    -fx-label-padding: 0;
+    -fx-text-overrun: clip;
+    -fx-font-family: 'Bebas Neue Regular';
+}
