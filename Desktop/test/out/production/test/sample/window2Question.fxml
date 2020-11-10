@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0"
+			prefWidth="795.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.1"
+			xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerTestWindow">
+	<children>
+		<MenuBar style="-fx-background-color: #ffffff;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+			<menus>
+				<Menu mnemonicParsing="false" text="Язык">
+					<items>
+						<MenuItem fx:id="questionLangRus" mnemonicParsing="false" text="Русский"/>
+						<MenuItem fx:id="questionLangEng" mnemonicParsing="false" text="English"/>
+					</items>
+				</Menu>
+				<Menu mnemonicParsing="false" text="Тема">
+					<items>
+						<MenuItem fx:id="questionThemeLight" mnemonicParsing="false" text="Светлая"/>
+						<MenuItem fx:id="questionThemeDark" mnemonicParsing="false" text="Темная"/>
+					</items>
+				</Menu>
+			</menus>
+		</MenuBar>
+		<SplitPane dividerPositions="0.2988650693568726" layoutX="146.0" layoutY="114.0" prefHeight="436.0"
+				   prefWidth="821.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+				   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="114.0">
+			<items>
+				<AnchorPane maxHeight="920.0" maxWidth="0.0" minHeight="0.0" minWidth="0.0" prefHeight="442.0"
+							prefWidth="216.0" style="-fx-background-color: #006fb7;">
+					<children>
+						<JFXButton alignment="BASELINE_LEFT" graphicTextGap="40.0" layoutX="-9.0" layoutY="29.0"
+								   prefHeight="47.0" prefWidth="236.0" style="-fx-background-color: #006fb7;"
+								   text="Прохождение тестов" textFill="WHITE" viewOrder="5.0">
+							<graphic>
+								<ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true"
+										   translateX="30.0">
+									<image>
+										<Image url="@assets/baseline_grading_white_18dp.png"/>
+									</image>
+								</ImageView>
+							</graphic>
+							<font>
+								<Font name="Roboto Medium" size="12.218181610107422"/>
+							</font>
+						</JFXButton>
+						<JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="40.0" layoutX="-9.0"
+								   layoutY="75.0" prefHeight="47.0" prefWidth="236.0"
+								   style="-fx-background-color: #006fb7;" text="Результаты тестов" textFill="WHITE">
+							<graphic>
+								<ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true"
+										   translateX="30.0">
+									<image>
+										<Image url="@assets/baseline_assessment_white_18dp.png"/>
+									</image>
+								</ImageView>
+							</graphic>
+							<font>
+								<Font name="Roboto Medium" size="12.218181610107422"/>
+							</font>
+						</JFXButton>
+						<JFXButton alignment="BASELINE_LEFT" graphicTextGap="40.0" layoutX="-8.0" layoutY="121.0"
+								   prefHeight="47.0" prefWidth="236.0" style="-fx-background-color: #006fb7;"
+								   text="Настройки" textFill="WHITE">
+							<graphic>
+								<ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true"
+										   translateX="30.0">
+									<image>
+										<Image url="@assets/baseline_settings_white_18dp.png"/>
+									</image>
+								</ImageView>
+							</graphic>
+							<font>
+								<Font name="Roboto Medium" size="12.218181610107422"/>
+							</font>
+						</JFXButton>
+						<JFXButton alignment="BASELINE_LEFT" graphicTextGap="40.0" layoutX="-7.0" layoutY="167.0"
+								   prefHeight="47.0" prefWidth="236.0" style="-fx-background-color: #006fb7;"
+								   text="Помощь" textFill="WHITE">
+							<graphic>
+								<ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true"
+										   translateX="30.0">
+									<image>
+										<Image url="@assets/baseline_help_white_18dp.png"/>
+									</image>
+								</ImageView>
+							</graphic>
+							<font>
+								<Font name="Roboto Medium" size="12.218181610107422"/>
+							</font>
+						</JFXButton>
+					</children>
+				</AnchorPane>
+				<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="456.0" prefWidth="785.0"
+							style="-fx-background-color: #ffffff;">
+					<children>
+						<ScrollPane fx:id="scrollPane" layoutX="280.0" layoutY="136.0" prefHeight="463.0"
+									prefWidth="809.0" style="-fx-background-color: #ffffff;"
+									AnchorPane.bottomAnchor="-29.0" AnchorPane.leftAnchor="0.0"
+									AnchorPane.rightAnchor="-24.0" AnchorPane.topAnchor="0.0">
+							<content>
+								<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0"
+											prefHeight="900.0" prefWidth="1667.0"
+											style="-fx-background-color: #ffffff;">
+									<children>
+										<Line endX="2594.243408203125" endY="1.52587890625E-5" layoutX="-940.0"
+											  layoutY="98.0" startX="1063.7889404296875" startY="1.52587890625E-5"
+											  stroke="#eaeaea"/>
+										<Text fx:id="question" fill="#242424" layoutX="134.0" layoutY="161.0"
+											  strokeType="OUTSIDE" strokeWidth="0.0"
+											  text="Выберите все типы скриптов, которые используются в InTouch:">
+											<font>
+												<Font name="Roboto Medium" size="18.0"/>
+											</font>
+										</Text>
+										<Text fx:id="testName" fill="#2d3e50" layoutX="134.0" layoutY="88.0"
+											  strokeType="OUTSIDE" strokeWidth="0.0" text="Sibintek test"
+											  wrappingWidth="248.03904724121082">
+											<font>
+												<Font name="Bebas Neue Regular" size="36.0"/>
+											</font>
+										</Text>
+										<JFXCheckBox fx:id="CheckBoxButton1" checkedColor="#006fb7" layoutX="152.0" layoutY="191.0"
+													 text="Application" textFill="#242424">
+											<font>
+												<Font name="Roboto Medium" size="18.0"/>
+											</font>
+										</JFXCheckBox>
+										<JFXCheckBox fx:id="CheckBoxButton2" checkedColor="#006fb7" layoutX="152.0" layoutY="219.0" text="Key"
+													 textFill="#242424">
+											<font>
+												<Font name="Roboto Medium" size="18.0"/>
+											</font>
+										</JFXCheckBox>
+										<JFXCheckBox fx:id="CheckBoxButton3" checkedColor="#006fb7" layoutX="152.0" layoutY="247.0"
+													 text="Object" textFill="#242424">
+											<font>
+												<Font name="Roboto Medium" size="18.0"/>
+											</font>
+										</JFXCheckBox>
+										<JFXCheckBox fx:id="CheckBoxButton4" checkedColor="#006fb7" layoutX="152.0" layoutY="275.0"
+													 text="Action" textFill="#242424">
+											<font>
+												<Font name="Roboto Medium" size="18.0"/>
+											</font>
+										</JFXCheckBox>
+										<JFXCheckBox fx:id="CheckBoxButton5" checkedColor="#006fb7" layoutX="151.0" layoutY="303.0"
+													 text="StandAlone" textFill="#242424">
+											<font>
+												<Font name="Roboto Medium" size="18.0"/>
+											</font>
+										</JFXCheckBox>
+										<JFXButton fx:id="Answer" layoutX="592.0" layoutY="369.0" prefHeight="28.0"
+												   prefWidth="113.0" style="-fx-background-color: #f07d00;"
+												   textFill="WHITE" AnchorPane.leftAnchor="1000.0"
+												   AnchorPane.topAnchor="500.0">
+											<font>
+												<Font name="Roboto Medium" size="12.218181610107422"/>
+											</font>
+										</JFXButton>
+									</children>
+								</AnchorPane>
+							</content>
+						</ScrollPane>
+					</children>
+				</AnchorPane>
+			</items>
+		</SplitPane>
+		<JFXButton fx:id="prevQuestionButton" contentDisplay="GRAPHIC_ONLY" layoutX="9.999999999999943" layoutY="114.0"
+				   prefHeight="420.0" prefWidth="44.0" rotate="180.0" style="-fx-background-color: #006fb7;"
+				   AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="9.999999999999943" AnchorPane.topAnchor="114.0">
+			<graphic>
+				<ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+					<image>
+						<Image url="@assets/baseline_arrow_forward_ios_white_18dp.png"/>
+					</image>
+				</ImageView>
+			</graphic>
+		</JFXButton>
+		<ImageView fitHeight="47.0" fitWidth="161.0" layoutX="28.0" layoutY="49.0" pickOnBounds="true"
+				   preserveRatio="true">
+			<image>
+				<Image url="@assets/AVEVA_logo.png"/>
+			</image>
+		</ImageView>
+		<Line endX="1772.28564453125" endY="1.52587890625E-5" layoutX="-7.0" layoutY="27.0" startX="-55.0000114440918"
+			  stroke="#eaeaea"/>
+		<Text fx:id="UserEmail" fill="#242424" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT"
+			  wrappingWidth="200.0" AnchorPane.rightAnchor="96.0" AnchorPane.topAnchor="60.0">
+			<font>
+				<Font name="Roboto Medium" size="12.218181610107422"/>
+			</font>
+		</Text>
+	</children>
+</AnchorPane>

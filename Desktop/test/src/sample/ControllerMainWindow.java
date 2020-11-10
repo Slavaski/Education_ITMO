@@ -69,13 +69,9 @@ public class ControllerMainWindow extends ControllerAuthWindow {
 //        System.out.println("ПРОВЕРКИ: " + mainLangRus.isDisable());
 //        System.out.println(mainLangEng.isDisable()); оба false
         LogoutButton.setOnAction(event -> logout(LogoutButton.getScene().getWindow()));
-
         TestsButton.setOnAction(event -> goToTests(TestsButton.getScene().getWindow()));
-
         HelpButton.setOnAction(event -> goToHelp(HelpButton.getScene().getWindow()));
-
         TestResultsButton.setOnAction(event -> goToTestResults(TestResultsButton.getScene().getWindow()));
-
         MainButton.setOnAction(event -> goToMain(MainButton.getScene().getWindow()));
     }
 }

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="1080.0" minWidth="1920.0" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #424242;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MenuBar style="-fx-background-color: #ffffff;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="Язык">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Русский" />
+                  <MenuItem mnemonicParsing="false" text="English" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Тема">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Светлая" />
+                  <MenuItem mnemonicParsing="false" text="Темная" />
+              </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <SplitPane dividerPositions="0.2988650693568726" layoutX="54.0" layoutY="114.0" prefHeight="966.0" prefWidth="1866.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="114.0">
+         <items>
+            <AnchorPane maxHeight="920.0" maxWidth="0.0" minHeight="0.0" minWidth="0.0" prefHeight="442.0" prefWidth="216.0" style="-fx-background-color: #006fb7;">
+               <children>
+                  <JFXButton alignment="BASELINE_LEFT" graphicTextGap="40.0" layoutX="-9.0" layoutY="29.0" prefHeight="47.0" prefWidth="236.0" style="-fx-background-color: #006fb7;" text="Прохождение тестов" textFill="WHITE" viewOrder="5.0">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" translateX="30.0">
+                           <image>
+                              <Image url="@Downloads/2x/baseline_grading_white_18dp.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Roboto Medium" size="12.218181610107422" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="40.0" layoutX="-9.0" layoutY="75.0" prefHeight="47.0" prefWidth="236.0" style="-fx-background-color: #006fb7;" text="Результаты тестов" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" translateX="30.0">
+                           <image>
+                              <Image url="@Downloads/2x/baseline_assessment_white_18dp.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Roboto Medium" size="12.218181610107422" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" graphicTextGap="40.0" layoutX="-8.0" layoutY="121.0" prefHeight="47.0" prefWidth="236.0" style="-fx-background-color: #006fb7;" text="Настройки" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" translateX="30.0">
+                           <image>
+                              <Image url="@Downloads/2x/baseline_settings_white_18dp.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Roboto Medium" size="12.218181610107422" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" graphicTextGap="40.0" layoutX="-7.0" layoutY="167.0" prefHeight="47.0" prefWidth="236.0" style="-fx-background-color: #006fb7;" text="Помощь" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" translateX="30.0">
+                           <image>
+                              <Image url="@Downloads/2x/baseline_help_white_18dp.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Roboto Medium" size="12.218181610107422" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="456.0" prefWidth="785.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <ScrollPane layoutX="40.0" layoutY="136.0" prefHeight="964.0" prefWidth="1871.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <content>
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="963.0" prefWidth="1910.0" style="-fx-background-color: #424242;">
+                           <children>
+                              <JFXCheckBox checkedColor="#006fb7" layoutX="152.0" layoutY="275.0" style="-jfx-unchecked-color: e7e7e7; -jfx-checked-color: #475965;" text="Action" textFill="#e7e7e7">
+                                 <font>
+                                    <Font name="Roboto Medium" size="18.0" />
+                                 </font>
+                              </JFXCheckBox>
+                              <Line endX="2758.131103515625" layoutX="-940.0" layoutY="98.0" startX="1063.7889404296875" startY="1.52587890625E-5" stroke="#a0a0a0" />
+                              <Text fill="#e7e7e7" layoutX="134.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Выберите все типы скриптов, которые используются в InTouch:">
+                                 <font>
+                                    <Font name="Roboto Medium" size="18.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="#a0a0a0" layoutX="134.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Название теста" wrappingWidth="248.03904724121082">
+                                 <font>
+                                    <Font name="Bebas Neue Regular" size="36.0" />
+                                 </font>
+                              </Text>
+                              <JFXCheckBox checkedColor="#006fb7" layoutX="152.0" layoutY="191.0" style="-jfx-checked-color: #475965; -jfx-unchecked-color: e7e7e7;" text="Application" textFill="#e7e7e7">
+                                 <font>
+                                    <Font name="Roboto Medium" size="18.0" />
+                                 </font>
+                              </JFXCheckBox>
+                              <JFXCheckBox checkedColor="#006fb7" layoutX="152.0" layoutY="219.0" style="-jfx-unchecked-color: e7e7e7; -jfx-checked-color: #475965;" text="Key" textFill="#e7e7e7">
+                                 <font>
+                                    <Font name="Roboto Medium" size="18.0" />
+                                 </font>
+                              </JFXCheckBox>
+                              <JFXCheckBox checkedColor="#006fb7" layoutX="152.0" layoutY="247.0" style="-jfx-unchecked-color: e7e7e7; -jfx-checked-color: #475965;" text="Object" textFill="#e7e7e7">
+                                 <font>
+                                    <Font name="Roboto Medium" size="18.0" />
+                                 </font>
+                              </JFXCheckBox>
+                              <JFXCheckBox checkedColor="#006fb7" layoutX="151.0" layoutY="303.0" style="-jfx-unchecked-color: e7e7e7; -jfx-checked-color: #475965;" text="StandAlone" textFill="#e7e7e7">
+                                 <font>
+                                    <Font name="Roboto Medium" size="18.0" />
+                                 </font>
+                              </JFXCheckBox>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+      <ImageView fitHeight="47.0" fitWidth="161.0" layoutX="28.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Downloads/2x/Mask%20Group.png" />
+         </image>
+      </ImageView>
+      <Line endX="1927.0" endY="0.9272575378417969" layoutX="-7.0" layoutY="27.0" startX="-55.0000114440918" stroke="GREY" strokeWidth="2.0" />
+      <Text fill="#e7e7e7" layoutX="626.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserEmail@gmail.com" AnchorPane.rightAnchor="44.75398254394531">
+         <font>
+            <Font name="Roboto Medium" size="13.0" />
+         </font>
+      </Text>
+      <Line endX="1905.6220703125" endY="-1.52587890625E-5" layoutX="13.0" layoutY="115.0" startX="-55.0000114440918" stroke="GREY" strokeWidth="2.0" />
+      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="8.0" layoutY="113.0" prefHeight="442.0" prefWidth="45.0" rotate="180.0" style="-fx-background-color: #475965;" AnchorPane.bottomAnchor="-5.0" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="113.0">
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Downloads/2x/baseline_arrow_forward_ios_white_18dp.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Line endX="191.02532958984375" endY="1077.2181396484375" layoutX="-187.0" layoutY="-2.0" startX="191.02532958984375" startY="120.18180847167969" stroke="GREY" strokeWidth="9.0" />
+   </children>
+</AnchorPane>
