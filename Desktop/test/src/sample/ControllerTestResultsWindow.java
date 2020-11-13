@@ -8,14 +8,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.util.concurrent.TimeUnit;
 
-public class ControllerTestsWindow extends ControllerAuthWindow {
+public class ControllerTestResultsWindow extends ControllerAuthWindow {
 
     @FXML
     private Button MainButton;
@@ -31,9 +30,6 @@ public class ControllerTestsWindow extends ControllerAuthWindow {
 
     @FXML
     private JFXButton TestResultsButton;
-
-    @FXML
-    private JFXButton TestButton;
 
     @FXML
     private MenuItem testsLangRus;
@@ -58,6 +54,6 @@ public class ControllerTestsWindow extends ControllerAuthWindow {
         HelpButton.setOnAction(event -> goToHelp());
         TestResultsButton.setOnAction(event -> goToTestResults());
         MainButton.setOnAction(event -> goToMain());
-        TestButton.setOnAction(event -> goToQuestions());
     }
 }
+
