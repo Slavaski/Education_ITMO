@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 import java.awt.*;
 import java.io.IOException;
@@ -20,8 +19,7 @@ public class Main extends Application {
     private final static Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
     protected static double widthScreen = screenSize.getWidth();
     protected static double heightScreen = screenSize.getHeight();
-    private final float widthOnCornerToAuth = 405;
-    private final float heightOnCornerToAuth = 390;
+    private String title;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -32,6 +30,7 @@ public class Main extends Application {
         myStage = primaryStage;
         myStage.setTitle("Test - Authorization");
         myStage.show();
+        myStage.centerOnScreen();
     }
 
     //@todo сделать страницы, которых нет
@@ -42,13 +41,8 @@ public class Main extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        nextScene = new Scene(root);
-        myStage.setScene(nextScene);
-        myStage.setX(widthScreen / 2 - widthOnCornerToAuth);
-        myStage.setY(heightScreen / 2 - heightOnCornerToAuth);
-        myStage.show();
-        myStage.setTitle("Test - Authorization");
-        myStage.setResizable(false);
+        title = "Test - Authorization";
+        showAndTuneScene(root, title);
     }
 
     protected void goToMain() {
@@ -58,14 +52,8 @@ public class Main extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        nextScene = new Scene(root, widthScreen, heightScreen);
-        myStage.setScene(nextScene);
-        myStage.setX(-8);
-        myStage.setY(-8);
-        myStage.show();
-        myStage.setTitle("Test - Main window");
-        myStage.setMaximized(true);
-        myStage.setResizable(false);
+        title = "Test - Main window";
+        showAndTuneScene(root, title);
     }
 
     protected void goToHelp() {
@@ -75,12 +63,8 @@ public class Main extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        nextScene = new Scene(root, widthScreen, heightScreen);
-        myStage.setScene(nextScene);
-        myStage.show();
-        myStage.setTitle("Test - Help");
-        myStage.setMaximized(true);
-        myStage.setResizable(false);
+        title = "Test - Help";
+        showAndTuneScene(root, title);
     }
 
     protected void goToTests() {
@@ -90,12 +74,8 @@ public class Main extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        nextScene = new Scene(root, widthScreen, heightScreen);
-        myStage.setScene(nextScene);
-        myStage.show();
-        myStage.setTitle("Test - Tests");
-        myStage.setMaximized(true);
-        myStage.setResizable(false);
+        title = "Test - Tests";
+        showAndTuneScene(root, title);
     }
 
     protected void goToQuestions() {
@@ -105,12 +85,8 @@ public class Main extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        nextScene = new Scene(root, widthScreen, heightScreen);
-        myStage.setScene(nextScene);
-        myStage.show();
-        myStage.setTitle("Test - Questions");
-        myStage.setMaximized(true);
-        myStage.setResizable(false);
+        title = "Test - Questions";
+        showAndTuneScene(root, title);
     }
 
     protected void goToTestResults() {
@@ -120,12 +96,23 @@ public class Main extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        title = "Test - Test results";
+        showAndTuneScene(root, title);
+    }
+
+    private void showAndTuneScene(Parent root, String title) {
         nextScene = new Scene(root, widthScreen, heightScreen);
         myStage.setScene(nextScene);
-        myStage.show();
-        myStage.setTitle("Test - Test results");
-        myStage.setMaximized(true);
+        myStage.setTitle(title);
+        if (title.equals("Test - Authorization"))
+            myStage.setMaximized(false);
+        else
+            myStage.setMaximized(true);
+//        ломается при повторном выходе
         myStage.setResizable(false);
+        if (!myStage.isMaximized())
+            myStage.centerOnScreen();
+        myStage.show();
     }
 
     public static void main(String[] args) {

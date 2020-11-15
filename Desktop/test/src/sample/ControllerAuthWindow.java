@@ -48,7 +48,6 @@ public class ControllerAuthWindow extends Main {
                     e.printStackTrace();
                 }
                 if (response != null)
-//                    if (response.isSuccessful()) goToMain(Login.getScene().getWindow());
                     if (response.isSuccessful()) goToMain();
                     else {
                         Alert badResponse = new Alert(Alert.AlertType.ERROR);
