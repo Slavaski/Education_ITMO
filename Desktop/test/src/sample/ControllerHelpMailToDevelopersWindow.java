@@ -6,38 +6,27 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.text.Text;
 
-public class ControllerTestResultsWindow extends ControllerAuthWindow {
-
+public class ControllerHelpMailToDevelopersWindow extends ControllerAuthWindow {
     @FXML
     private Button MainButton;
-
     @FXML
     private Text UserEmail;
-
     @FXML
     private JFXButton TestsButton;
-
     @FXML
     private JFXButton HelpButton;
-
     @FXML
     private JFXButton TestResultsButton;
-
     @FXML
-    private MenuItem testsLangRus;
-
+    private MenuItem helpMailToDevelopersLangRus;
     @FXML
-    private MenuItem testsLangEng;
-
+    private MenuItem helpMailToDevelopersLangEng;
     @FXML
-    private MenuItem testsThemeLight;
-
+    private MenuItem helpMailToDevelopersThemeLight;
     @FXML
-    private MenuItem testsThemeDark;
-
+    private MenuItem helpMailToDevelopersThemeDark;
     @FXML
     private Button LogoutButton;
-
     @FXML
     void initialize() {
         UserEmail.setText(login);

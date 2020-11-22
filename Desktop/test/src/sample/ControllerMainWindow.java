@@ -2,24 +2,25 @@ package sample;
 
 import com.jfoenix.controls.JFXButton;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
-import com.sun.tools.javac.Main;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.lang.reflect.Array;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class ControllerMainWindow extends ControllerAuthWindow {
-
-    @FXML
-    private Button MainButton;
 
     @FXML
     private MenuItem mainThemeLight;
@@ -28,16 +29,19 @@ public class ControllerMainWindow extends ControllerAuthWindow {
     private MenuItem mainThemeDark;
 
     @FXML
-    private Text mainHeader;
-
-    @FXML
-    private Text mainMain;
-
-    @FXML
     private MenuItem mainLangRus;
 
     @FXML
     private MenuItem mainLangEng;
+
+    @FXML
+    private Button MainButton;
+
+    @FXML
+    private Text mainHeader;
+
+    @FXML
+    private Text mainMain;
 
     @FXML
     private JFXButton TestsButton;
@@ -59,12 +63,8 @@ public class ControllerMainWindow extends ControllerAuthWindow {
         UserEmail.setText(login);
         mainMain.setLineSpacing(1.0);
         mainMain.setWrappingWidth(1000);
-        mainHeader.setText("Приветствуем!");
-        mainMain.setText("   В данном приложении Вы можете пройти тестирования - раздел \"Прохождение тестов\", " +
-                "посмотреть свои результаты - раздел \"Результаты тестов\" и послать письмо разработчику.\n" +
-                "   Если в ходе работы были обнаружены проблемы, баги или присутствуют " +
-                "жалобы/пожелания по работе программы, перейдите в раздел \"Помощь\"->\"Письмо разработчику\", подробно изложите ситуацию и " +
-                "отправьте свое сообщение. Каждое сообщение будет рассмотрено.\n   Приятного и плодотворного пользования!");
+        mainHeader.setText(getLangSource("main_header", position));
+        mainMain.setText(getLangSource("main_main", position));
         LogoutButton.setOnAction(event -> logout());
         TestsButton.setOnAction(event -> goToTests());
         HelpButton.setOnAction(event -> goToHelp());

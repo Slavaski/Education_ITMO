@@ -1,0 +1,45 @@
+language;Язык;Language !во всех!
+rus_lang;Русский;Russian !во всех!
+eng_lang;Английский;English !во всех!
+theme;Тема;Theme !во всех!
+light_theme;Светлая;Light !во всех!
+dark_theme;Темная;Dark !во всех!
+test_pass;Прохождение тестов;Test passing !windowMain, windowTests, windowTestResults, windowHelpMain, windowHelpDescription, windowHelpMailToDevelopers!
+test_res;Результаты тестов;Test results !windowMain, windowTests, windowTestResults, windowHelpMain, windowHelpDescription, windowHelpMailToDevelopers!
+help;Помощь;Help !windowMain, windowTests, windowTestResults, windowHelpMain, windowHelpDescription, windowHelpMailToDevelopers!
+available_tests;Доступные тесты;Available tests !windowTests!
+go_to_test;Перейти к тесту;Go to the test !windowTests!
+sing_out;Выход;Sing out !windowMain, windowTests, windowTestResults, windowHelpMain, windowHelpDescription, windowHelpMailToDevelopers!
+prog_overview;Описание и работа с программой;Description and work with the program !windowHelpMain, windowHelpDescription!
+write_developer;Написать разработчику;Write to developer !windowHelpMain, windowHelpMailToDevelopers!
+wish;Пожелание;Wish !windowHelpMailToDevelopers!
+claim;Претензия;Claim !windowHelpMailToDevelopers!
+comment;Комментарий;Comment !windowHelpMailToDevelopers!
+another;Другое;Another !windowHelpMailToDevelopers!
+enter_letter;Введите текст письма...;Enter the text of the letter... !windowHelpMailToDevelopers!
+send;Отправить;Send !windowHelpMailToDevelopers!
+login;Логин;Login !windowAuth!
+password;Пароль;Password !windowAuth!
+sing_in;Войти;Sing in !windowAuth!
+passed;Пройден:;Passed: !windowTestResults!
+evaluation_criteria;Критерии оценивания;Evaluation criteria !windowTestResults!
+correct_answers;Правильных ответов;Correct answers !windowTestResults!
+title_auth;;AVEVA Test - Authorization
+title_main;;AVEVA Test - Main window
+title_help_main;;AVEVA Test - Help
+title_help_desc;;AVEVA Test - Help - Description and work with the program
+title_help_mail;;AVEVA Test - Help - Write to developer
+title_tests;;AVEVA Test - Tests
+title_questions;;AVEVA Test - Questions
+title_test_results;;AVEVA Test - Test results
+error_title_alert_login_password;Ошибка авторизации.;Authorization error.
+error_content_alert_login_password;Пара логин-пароль не подходит.;Login-password pair is not suitable.
+error_title_alert_bad_login;Ошибка в логине;Error in login
+error_content_alert_bad_login;Логин должен содержать символ '@'.;Login must contain '@' character.
+help_title_alert;Помощь;Help
+help_content_alert;Если у Вас нет логина или пароля, обратитесь к Модератору. Функции изменения логина или пароля не предусмотрено, поэтому не теряйте и не забывайте личные данные для авторизации. После добавления Вас в систему для полноценного и правильного функционирования следует подождать 2 рабочих дня.;If you don't have a username or password, please contact the Moderator. There are no functions to change your login or password, so don't lose or forget your personal data for authorization. After adding you to the system for full and correct functioning you should wait 2 working days.
+main_header;Приветствуем!;Welcome!
+main_main;   В данном приложении Вы можете пройти тестирования - раздел \"Прохождение тестов\", посмотреть свои результаты - раздел \"Результаты тестов\" и послать письмо разработчику.\n   Если в ходе работы были обнаружены проблемы, баги или присутствуют жалобы/пожелания по работе программы, перейдите в раздел \"Помощь\"->\"Письмо разработчику\", подробно изложите ситуацию и отправьте свое сообщение. Каждое сообщение будет рассмотрено.\n   Приятного и плодотворного пользования!;In this application you can pass the tests - section \"Test passing\", see your results - section \"Test results\" and send a letter to the developer.\n If in the course of work there were found problems, bugs or there are complaints/wishes about the work of the program, go to the section \"Help\"->\"Write to developer\", describe the situation in detail and send your message. Each message will be considered.\n Have a nice and productive use!
+button_answer;Ответить;Submit
+test_title;Тест Sibintek;Sibintek test
+test_info;Информация о тесте;Test information

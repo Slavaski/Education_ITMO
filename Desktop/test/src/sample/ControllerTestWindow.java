@@ -87,7 +87,7 @@ public class ControllerTestWindow extends ControllerAuthWindow {
             Answer.setOnAction(event -> {
 //            Добавление ответа, мб оптимизировать
                 if (RadioButton1.isSelected())
-                    answers.put(1, "1");//номер вопроса, ответ - если ответ множественный, то парсить строку, разрезая по запятой
+                    answers.put(1, "1");//номер вопроса, ответ (если ответ множественный, то парсить строку, разрезая по запятой)
                 if (RadioButton2.isSelected())
                     answers.put(1, "2");
                 if (RadioButton3.isSelected())
