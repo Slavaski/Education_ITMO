@@ -1,0 +1,44 @@
+another;Другое;Another
+availableTests;Доступные тесты;Available tests
+buttonGoToTest;Перейти к тесту;Go to the test
+buttonHelp;Помощь;Help
+buttonSend;Отправить;Send
+buttonSignOut;Выход;Sign out
+buttonSingIn;Войти;Sing in
+buttonTests;Прохождение тестов;Test passing
+buttonTestResults;Результаты тестов;Test results
+button_answer;Ответить;Submit
+claim;Претензия;Claim
+comment;Комментарий;Comment
+correctAnswers;Правильных ответов;Correct answers
+enterLetter;Введите текст письма...;Enter the text of the letter...
+errorContentAlertLoginPassword;Пара логин-пароль не подходит.;Login-password pair is not suitable.
+errorTitleAlertLoginPassword;Ошибка авторизации.;Authorization error.
+evaluationCriteria;Критерии оценивания;Evaluation criteria
+helpContentAlert;Если у Вас нет логина или пароля, обратитесь к Модератору. Функции изменения логина или пароля не предусмотрено, поэтому не теряйте и не забывайте личные данные для авторизации. После добавления Вас в систему для полноценного и правильного функционирования следует подождать 2 рабочих дня.;If you don't have a username or password, please contact the Moderator. There are no functions to change your login or password, so don't lose or forget your personal data for authorization. After adding you to the system for full and correct functioning you should wait 2 working days.
+helpTitleAlert;Помощь;Help
+langEng;Английский;English
+langRus;Русский;Russian
+login;Логин;Login
+mainHeader;Приветствуем!;Welcome!
+mainMain; В данном приложении Вы можете пройти тестирования - раздел "Прохождение тестов", посмотреть свои результаты - раздел "Результаты тестов" и послать письмо разработчику. Если в ходе работы были обнаружены проблемы, баги или присутствуют жалобы/пожелания по работе программы, перейдите в раздел "Помощь"->"Письмо разработчику", подробно изложите ситуацию и отправьте свое сообщение. Каждое сообщение будет рассмотрено. Приятного и плодотворного пользования!;In this application you can pass the tests - section "Test passing", see your results - section "Test results" and send a letter to the developer. If in the course of work there were found problems, bugs or there are complaints/wishes about the work of the program, go to the section "Help"->"Write to developer", describe the situation in detail and send your message. Each message will be considered. Have a nice and productive use!
+menuLang;Язык;Language
+menuTheme;Тема;Theme
+overview;Это схема переходов. Сейчас вы находитесь на странице "Описание и работа с программой". На странице "Главное окно" Вы можете увидеть краткое описание приложения. На странице "Тесты" Вы можете пройти тестирование. На странице "Результаты тестов" Вы можете просмотреть результаты уже пройденных тестов. Со страницы "Помощь" Вы можете перейти на страницы "Описание и работа с программой" и "Написать разработчикам". На данной странице Вы можете просмотреть схему переходов внутри программы и прочитать описание программы, которое представлено ниже. На странице "Написать разработчикам" Вы можете послать письмо команде разработчиков. Если в ходе работы были обнаружены проблемы, баги или присутствуют жалобы/пожелания по работе программы и Вы хотите сообщить об этом, то Вам следует перейти в этот раздел, подробно изложить ситуацию, прикрепить документы, если они есть, и отправить сообщение. Каждое сообщение будет рассмотрено. Практически на всех страницах присутствуют 2 настройки приложения, находящиеся в левом верхнем углу приложения: световая тема и изменение языка. Будьте аккуратны: при смене темы все текстовые поля сотрут введеные данные и будут обнулены! В правом верхнем углу приложения Вы можете увидеть логин авторизованного на настоящий момент учетной записи. Рядом с логином распологается кнопка "Выход". Она позволяет выйти из учетной записи и войти снова. На странице "Авторизация" Вы можете войти в учетную запись, а также посмотреть подсказку, нажав на кнопку "?".;This is a scheme of transitions. Now you are on the page "Description and work with the program". On the "Main window" page you can see a short description of the application. On the "Tests" page you can get tested. On the "Test Results" page, you can view the results of the tests you have already passed. From the "Help" page you can go to the "Description and work with the program" and "Write to developers" pages. On this page you can view the scheme of transitions within the program and read the description of the program, which is presented below. On the page "Write to developers" you can send a letter to the development team. If in the course of the work problems, bugs were found or there are complaints / wishes about the program and you want to report this, then you should go to this section, describe the situation in detail, attach documents, if any, and send a message. Each post will be reviewed. Almost all pages have 2 application settings located in the upper left corner of the application: light theme and language change. Be careful: when you change the theme, all text fields will erase the entered data and will be reset to zero! In the upper right corner of the application, you can see the login of the currently authorized account. The "Exit" button is located next to the login. It allows you to log out and log in again. On the "Authorization" page you can log into your account, as well as see the hint by clicking on the "?"
+passedDate;Пройден: ;Passed:
+password;Пароль;Password
+programOverview;Описание и работа с программой;Description and work with the program
+testInfo;Информация о тесте;Test information
+textTestResults;Результаты тестов;Test results
+themeDark;Темная;Dark
+themeLight;Светлая;Light
+titleAuth;Klinkmann Testing - Авторизация;Klinkmann Testing - Authorization
+titleProgramOverview;Klinkmann Testing - Помощь - Описание и работа с программой;Klinkmann Testing - Help - Description and work with the program
+titleHelpWriteToDevelopers;Klinkmann Testing - Помощь - Написать разработчикам;Klinkmann Testing - Help - Write to developers
+titleHelpMain;Klinkmann Testing - Помощь;Klinkmann Testing - Help
+titleMain;Klinkmann Testing - Главное окно;Klinkmann Testing - Main window
+titleQuestions;Klinkmann Testing - Вопросы;Klinkmann Testing - Questions
+titleTestResults;Klinkmann Testing - Результаты тестов;Klinkmann Testing - Test results
+titleTests;Klinkmann Testing - Тесты;Klinkmann Testing - Tests
+wish;Пожелание;Wish
+writeToDevelopers;Написать разработчику;Write to developer

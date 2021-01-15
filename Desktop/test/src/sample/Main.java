@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import okhttp3.*;
+import org.json.*;
 
 import java.awt.*;
 import java.io.BufferedReader;
@@ -13,122 +15,194 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Scanner;
 
 public class Main extends Application {
-    protected HashMap<Integer, String> answers = new HashMap<>();
+    protected HashMap<Integer, String> answers = new HashMap<>();//@todo убрать и заменить на set
+    protected Set<String> answersSet = new HashSet<>(10, 1);
     protected Scene activeScene, nextScene;
     private static Stage myStage;
-    private final static Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-    private final double widthScreen = screenSize.getWidth();
-    private final double heightScreen = screenSize.getHeight() - 40;
-    protected static String login = "example@exapmle.com";
-    private String title;
-    protected int position = 1;//@todo 1-russian, 2-english
+    private static final Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+    private final double heightScreen = screenSize.getHeight() - 40; //40 - height of taskbar
+    protected final double widthScreen = screenSize.getWidth();
+
+    protected static String login = "example@example.com";
+    protected static String password;
+    protected static final String URL = "https://flaskprojecttest.herokuapp.com/api/";
+
+    protected static int langNumber = 1;//@todo 1-russian, 2-english
+    protected static int themeNumber = 1;//@todo 1-light, 2-dark
+    protected static JSONObject token = null;
+
+    //
+    public static int countOfRightAnswers = 0;
+    //
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("windowAuth.fxml"));
-//        Parent root = FXMLLoader.load(getClass().getResource("windowMain.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("windowDarkMain.fxml"));
+//        getAndSetToken();
+//        Parent root = FXMLLoader.load(getClass().getResource("windowDarkTests.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("windowLightAuth.fxml"));
+//@todo удалить все комментарии или вынести в отдельный файл с пометкой, где было изначально
         activeScene = new Scene(root);
         primaryStage.setScene(activeScene);
         myStage = primaryStage;
-        myStage.setTitle("AVEVA Test - Authorization");
-        myStage.getIcons().add(new Image("logo.png"));//@todo сделать лого и название
+        myStage.setTitle(getLangSource("titleAuth"));
+        myStage.getIcons().add(new Image("logo_little_without_borders.jpg"));
         myStage.show();
         myStage.centerOnScreen();
     }
 
-    //@todo сделать страницы, которых нет
-    protected void logout() {
-        Parent root = null;
+    protected int getAndSetToken() {
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url(URL + "token")
+                .addHeader("Authorization", Credentials.basic(login, password)).get().build();
+//                .addHeader("Authorization", Credentials.basic("kko1l@mail.ru", "B0Zgz5JzL")).get().build();
+        //kko1l@mail.ru  B0Zgz5JzL
+        Call call = client.newCall(request);
+        Response response;
         try {
-            root = FXMLLoader.load(getClass().getResource("windowAuth.fxml"));
+            response = call.execute();
+            if (response.code() == 200) {
+                token = new JSONObject(response.body().string());
+                return 200;
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        title = "AVEVA Test - Authorization";
-        showAndTuneScene(root, title, true);
+        return 401;
+    }
+
+    protected String getDataFromAPI(String lastPartOfURL) {
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url(URL + lastPartOfURL)
+                .addHeader("Authorization", Credentials.basic(token.getString("token"), "")).get().build();
+        //@todo здесь просто меняется get() на post(RequestBody body) и на delete()/delete(RequestBody body)
+        //@todo https://square.github.io/okhttp/4.x/okhttp/okhttp3/-request-body/
+        Call call = client.newCall(request);
+        Response response;
+        try {
+            response = call.execute();
+            return response.body().string();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    protected void signOut() {
+        login = "";
+        password = "";
+        token = null;
+
+        Parent root = null;
+        try {
+            if (themeNumber == 1) root = FXMLLoader.load(getClass().getResource("windowLightAuth.fxml"));
+            else root = FXMLLoader.load(getClass().getResource("windowDarkAuth.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        showAndTuneScene(root, getLangSource("titleAuth"), true);
     }
 
     protected void goToMain() {
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("windowMain.fxml"));
+            if (themeNumber == 1) root = FXMLLoader.load(getClass().getResource("windowLightMain.fxml"));
+            else root = FXMLLoader.load(getClass().getResource("windowDarkMain.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        title = "AVEVA Test - Main window";
-        showAndTuneScene(root, title, false);
+        showAndTuneScene(root, getLangSource("titleMain"), false);
     }
 
     protected void goToHelp() {
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("windowHelpMain.fxml"));
+            if (themeNumber == 1) root = FXMLLoader.load(getClass().getResource("windowLightHelp.fxml"));
+            else root = FXMLLoader.load(getClass().getResource("windowDarkHelp.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        title = "AVEVA Test - Help";
-        showAndTuneScene(root, title, false);
+        showAndTuneScene(root, getLangSource("titleHelpMain"), false);
     }
 
-    protected void goToHelpDescription() {
+    protected void goToProgramOverview() {
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("windowHelpDescription.fxml"));
+            if (themeNumber == 1) root = FXMLLoader.load(getClass().getResource("windowLightProgramOverview.fxml"));
+            else root = FXMLLoader.load(getClass().getResource("windowDarkProgramOverview.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        title = "AVEVA Test - Help - Description and work with the program";
-        showAndTuneScene(root, title, false);
+        showAndTuneScene(root, getLangSource("titleProgramOverview"), false);
     }
 
-    protected void goToHelpMailToDevelopers() {
+    protected void goToWriteToDevelopers() {
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("windowHelpMailToDevelopers.fxml"));
+            if (themeNumber == 1) root = FXMLLoader.load(getClass().getResource("windowLightWriteToDevelopers.fxml"));
+            else root = FXMLLoader.load(getClass().getResource("windowDarkWriteToDevelopers.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        title = "AVEVA Test - Help - Write to developer";
-        showAndTuneScene(root, title, false);
+        showAndTuneScene(root, getLangSource("titleHelpWriteToDevelopers"), false);
     }
 
     protected void goToTests() {
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("windowTests.fxml"));
+            if (themeNumber == 1) root = FXMLLoader.load(getClass().getResource("windowLightTests.fxml"));
+            else root = FXMLLoader.load(getClass().getResource("windowDarkTests.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        title = "AVEVA Test - Tests";
-        showAndTuneScene(root, title, false);
+        showAndTuneScene(root, getLangSource("titleTests"), false);
     }
 
     protected void goToQuestions() {
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("window1Question.fxml"));
+            if (themeNumber == 1) root = FXMLLoader.load(getClass().getResource("windowLight1Question.fxml"));
+            else root = FXMLLoader.load(getClass().getResource("windowDark1Question.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        title = "AVEVA Test - Questions";
-        showAndTuneScene(root, title, false);
+        showAndTuneScene(root, getLangSource("titleQuestions"), false);
     }
 
     protected void goToTestResults() {
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("windowTestResults.fxml"));
+            if (themeNumber == 1) root = FXMLLoader.load(getClass().getResource("windowLightTestResults.fxml"));
+            else root = FXMLLoader.load(getClass().getResource("windowDarkTestResults.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        title = "AVEVA Test - Test results";
-        showAndTuneScene(root, title, false);
+        showAndTuneScene(root, getLangSource("titleTestResults"), false);
     }
 
-    private void showAndTuneScene(Parent root, String title, Boolean isAuthNextScene) {
+//    private void showAndTuneScene(Parent root, String title, Boolean isAuthNextScene) {
+//        if (isAuthNextScene) {
+//            nextScene = new Scene(root);
+//        } else {
+//            nextScene = new Scene(root, widthScreen, heightScreen);
+//        }
+//        myStage.setScene(nextScene);
+//        myStage.setTitle(title);
+////        myStage.setResizable(false);
+//        if (isAuthNextScene) {
+//            myStage.centerOnScreen();
+//        } else {
+//            myStage.setMaximized(true);
+//        }
+//        myStage.show();
+//    }
+
+    protected void showAndTuneScene(Parent root, String title, Boolean isAuthNextScene) {
         if (isAuthNextScene) {
             nextScene = new Scene(root);
         } else {
@@ -136,7 +210,7 @@ public class Main extends Application {
         }
         myStage.setScene(nextScene);
         myStage.setTitle(title);
-        myStage.setResizable(false);
+//        myStage.setResizable(false);
         if (isAuthNextScene) {
             myStage.centerOnScreen();
         } else {
@@ -145,16 +219,16 @@ public class Main extends Application {
         myStage.show();
     }
 
-    protected String getLangSource(String key, int position) {
-        try (Scanner s = new Scanner(new BufferedReader(new FileReader("C:\\Users\\slava\\Desktop\\Education_ITMO\\Desktop\\test\\src\\sample\\ru_eng.txt")))) {
+    protected String getLangSource(String key) {
+        try (Scanner s = new Scanner(new BufferedReader(new FileReader("C:\\Users\\slava\\Desktop\\Education_ITMO\\Desktop\\test\\src\\sample\\ru_eng_sorted.txt")))) {
             while (s.hasNextLine()) {
                 String buf = s.nextLine();
-                if (buf.contains(key)) {
-                    String[] array = buf.split(";");
-                    return array[position];
+                String[] array = buf.split(";");
+                if (array[0].equals(key)) {
+                    return array[langNumber];
                 }
             }
-            System.out.println("BAD KEY OR POSITION OF LANGUAGE");
+            System.out.println("BAD KEY: " + key);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

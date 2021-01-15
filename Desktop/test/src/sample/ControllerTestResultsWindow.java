@@ -2,50 +2,127 @@ package sample;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class ControllerTestResultsWindow extends ControllerAuthWindow {
-
+    /**
+     * for localization
+     */
     @FXML
-    private Button MainButton;
-
+    private Text countOfRightAnswers;
     @FXML
-    private Text UserEmail;
-
+    private Text correctAnswers;
     @FXML
-    private JFXButton TestsButton;
-
+    private Text passedDate;
     @FXML
-    private JFXButton HelpButton;
-
+    private Text evaluationCriteria;
     @FXML
-    private JFXButton TestResultsButton;
-
+    private Text testTitle;
     @FXML
-    private MenuItem testsLangRus;
-
+    private Text textTestResults;
     @FXML
-    private MenuItem testsLangEng;
-
+    private Text userEmail;
+    /**
+     * menu
+     */
     @FXML
-    private MenuItem testsThemeLight;
-
+    private Menu menuLang;
     @FXML
-    private MenuItem testsThemeDark;
-
+    private Menu menuTheme;
     @FXML
-    private Button LogoutButton;
+    private MenuItem themeLight;
+    @FXML
+    private MenuItem themeDark;
+    @FXML
+    private MenuItem langRus;
+    @FXML
+    private MenuItem langEng;
+    /**
+     * navigation
+     * it's already finished, but need to check
+     */
+    @FXML
+    private ImageView imageMain;
+    @FXML
+    private JFXButton buttonTests;
+    @FXML
+    private JFXButton buttonTestResults;
+    @FXML
+    private JFXButton buttonHelp;
+    @FXML
+    private Button buttonSignOut;
 
     @FXML
     void initialize() {
-        UserEmail.setText(login);
-        LogoutButton.setOnAction(event -> logout());
-        TestsButton.setOnAction(event -> goToTests());
-        HelpButton.setOnAction(event -> goToHelp());
-        TestResultsButton.setOnAction(event -> goToTestResults());
-        MainButton.setOnAction(event -> goToMain());
+        setAllText();
+        langRus.setOnAction(event -> {
+            langNumber = 1;
+            setAllText();
+        });
+        langEng.setOnAction(event -> {
+            langNumber = 2;
+            setAllText();
+        });
+        themeLight.setOnAction(event -> {
+            themeNumber = 1;
+            setScene();
+        });
+        themeDark.setOnAction(event -> {
+            themeNumber = 2;
+            setScene();
+        });
+        userEmail.setText(login);
+        evaluationCriteria.setUnderline(true);
+
+        buttonSignOut.setOnAction(event -> signOut());
+        buttonTests.setOnAction(event -> goToTests());
+        buttonHelp.setOnAction(event -> goToHelp());
+        buttonTestResults.setOnAction(event -> goToTestResults());
+        imageMain.setOnMouseClicked(event -> goToMain());
+        evaluationCriteria.setOnMouseClicked(event -> {
+            JSONArray jsonArray = new JSONArray(getDataFromAPI("test_all"));
+            JSONObject jsonObject = jsonArray.getJSONObject(0);
+            //@todo make an alert
+            Alert criteria = new Alert(Alert.AlertType.INFORMATION);
+            criteria.setContentText(String.valueOf(jsonObject.get("description")));
+            criteria.setTitle(getLangSource("evaluationCriteria"));
+            criteria.setHeaderText("");
+            criteria.show();
+            criteria.setResizable(false);
+            criteria.setY(200.0);
+        });
+    }
+
+    private void setScene(){
+        goToTestResults();
+    }
+
+    private void setAllText(){
+        JSONArray jsonArray = new JSONArray(getDataFromAPI("test_all"));
+        JSONObject jsonObject = jsonArray.getJSONObject(0);
+
+        menuLang.setText(getLangSource("menuLang"));
+        langRus.setText(getLangSource("langRus"));
+        langEng.setText(getLangSource("langEng"));
+        menuTheme.setText(getLangSource("menuTheme"));
+        themeLight.setText(getLangSource("themeLight"));
+        themeDark.setText(getLangSource("themeDark"));
+        buttonTests.setText(getLangSource("buttonTests"));
+        buttonTestResults.setText(getLangSource("buttonTestResults"));
+        buttonHelp.setText(getLangSource("buttonHelp"));
+        buttonSignOut.setText(getLangSource("buttonSignOut"));
+        textTestResults.setText(getLangSource("textTestResults"));
+        evaluationCriteria.setText(getLangSource("evaluationCriteria"));
+        passedDate.setText(getLangSource("passedDate") + " 22.12.2020");//@todo надо сделать добавление даты, получаемой с серва
+        testTitle.setText(String.valueOf(jsonObject.get("name")).toUpperCase());
+        countOfRightAnswers.setText(Main.countOfRightAnswers + "/2");//@todo вставлять result с test_result с серва
     }
 }
 

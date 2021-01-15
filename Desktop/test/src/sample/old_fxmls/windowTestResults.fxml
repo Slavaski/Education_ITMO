@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<!--@todo сделать автодополнение блоков для тестов-->
+<AnchorPane maxHeight="1040" maxWidth="1920" minHeight="1040.0" minWidth="1920.0" prefHeight="1040.0" prefWidth="1920.0"
+            style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1">
+    <SplitPane dividerPositions="-1.0" layoutX="146.0" layoutY="114.0" prefHeight="436.0" prefWidth="795.0"
+               style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+               AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="114.0">
+        <AnchorPane layoutY="108.0" prefHeight="442.0" prefWidth="216.0" style="-fx-background-color: #006fb7;"
+                    AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="108.0"
+                    SplitPane.resizableWithParent="false">
+            <JFXButton fx:id="buttonTests" alignment="BASELINE_LEFT" graphicTextGap="30.0" layoutX="-1.0"
+                       layoutY="26.0" prefHeight="47.0" prefWidth="214.0" textFill="WHITE">
+                <graphic>
+                    <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true"
+                               translateX="20.0">
+                        <Image url="@assets/baseline_grading_white_18dp.png"/>
+                    </ImageView>
+                </graphic>
+                <font>
+                    <Font name="Roboto Medium" size="12"/>
+                </font>
+            </JFXButton>
+            <JFXButton fx:id="buttonTestResults" alignment="BASELINE_LEFT" graphicTextGap="30.0" layoutX="-1.0"
+                       layoutY="73.0" prefHeight="47.0" prefWidth="214.0" textFill="WHITE">
+                <graphic>
+                    <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true"
+                               translateX="20.0">
+                        <Image url="@assets/baseline_assessment_white_18dp.png"/>
+                    </ImageView>
+                </graphic>
+                <font>
+                    <Font name="Roboto Medium" size="12"/>
+                </font>
+            </JFXButton>
+            <JFXButton fx:id="buttonHelp" alignment="BASELINE_LEFT" graphicTextGap="30.0" layoutX="-1.0"
+                       layoutY="120.0" prefHeight="47.0" prefWidth="214.0" textFill="WHITE">
+                <graphic>
+                    <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true"
+                               translateX="20.0">
+                        <Image url="@assets/baseline_help_white_18dp.png"/>
+                    </ImageView>
+                </graphic>
+                <font>
+                    <Font name="Roboto Medium" size="12"/>
+                </font>
+            </JFXButton>
+        </AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="422.0" prefWidth="570.0"
+                    style="-fx-background-color: #ffffff;">
+            <ScrollPane layoutX="-2.0" layoutY="-1.0" prefHeight="965.0" prefWidth="2000.0"
+                        style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0"
+                        AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="0.0"
+                        AnchorPane.topAnchor="-1.0" fitToWidth="true" fitToHeight="true">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="964.0" prefWidth="1661.0"
+                            style="-fx-background-color: #ffffff;">
+                    <Line fx:id="lineUnderTextTestResults" endX="2574.60205078125"
+                          endY="1.52587890625E-5" layoutX="-1001.0" layoutY="97.0"
+                          startX="1064" startY="1.52587890625E-5" stroke="#eaeaea"/>
+                    <Text fx:id="textTestResults" fill="#2d3e50" layoutX="73.0" layoutY="87.84765625"
+                          strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="400.0"
+                          AnchorPane.leftAnchor="73.0" AnchorPane.topAnchor="49.0">
+                        <font>
+                            <Font name="Bebas Neue Regular" size="36.0"/>
+                        </font>
+                    </Text>
+                    <Rectangle fx:id="whiteRect1" arcHeight="5.0" arcWidth="5.0" fill="WHITE"
+                               height="193.0" layoutX="62.0" layoutY="148.0" stroke="BLACK"
+                               strokeType="INSIDE" strokeWidth="0.0" width="1116.0">
+                        <effect>
+                            <DropShadow color="#9c9c9c60"/>
+                        </effect>
+                    </Rectangle>
+                    <Rectangle fx:id="blueRect1" arcHeight="5.0" arcWidth="5.0" fill="#006fb7"
+                               height="36.0" layoutX="62.0" layoutY="148.0" stroke="BLACK"
+                               strokeType="INSIDE" strokeWidth="0.0" width="1116.0"/>
+                    <Text fx:id="testTitle1" fill="#2d3e50" layoutX="96.0" layoutY="254.0"
+                          strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="248.03904724121082">
+                        <font>
+                            <Font name="Bebas Neue Regular" size="24.0"/>
+                        </font>
+                    </Text>
+                    <Text fx:id="evaluationCriteria1" fill="#242424" layoutX="97.0" layoutY="280.0"
+                          strokeType="OUTSIDE" strokeWidth="0.0">
+                        <font>
+                            <Font name="Roboto Medium" size="14.0"/>
+                        </font>
+                    </Text>
+                    <Text fx:id="passedDate1" fill="WHITE" layoutX="73.0" layoutY="170.0"
+                          strokeType="OUTSIDE" strokeWidth="0.0">
+                        <font>
+                            <Font name="Roboto Medium" size="13.0"/>
+                        </font>
+                    </Text>
+                    <Rectangle fx:id="whiteRect2" arcHeight="5.0" arcWidth="5.0" fill="WHITE"
+                               height="193.0" layoutX="62.0" layoutY="375.0" stroke="BLACK"
+                               strokeType="INSIDE" strokeWidth="0.0" width="1116.0">
+                        <effect>
+                            <DropShadow color="#9c9c9c60"/>
+                        </effect>
+                    </Rectangle>
+                    <Rectangle fx:id="blueRect2" arcHeight="5.0" arcWidth="5.0" fill="#006fb7"
+                               height="36.0" layoutX="62.0" layoutY="375.0" stroke="BLACK"
+                               strokeType="INSIDE" strokeWidth="0.0" width="1116.0"/>
+                    <Text fx:id="testTitle2" fill="#2d3e50" layoutX="96.0" layoutY="481.0"
+                          strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="248.03904724121082">
+                        <font>
+                            <Font name="Bebas Neue Regular" size="24.0"/>
+                        </font>
+                    </Text>
+                    <Text fx:id="evaluationCriteria2" fill="#242424" layoutX="97.0" layoutY="507.0"
+                          strokeType="OUTSIDE" strokeWidth="0.0">
+                        <font>
+                            <Font name="Roboto Medium" size="14.0"/>
+                        </font>
+                    </Text>
+                    <Text fx:id="passedDate2" fill="WHITE" layoutX="73.0" layoutY="397.0"
+                          strokeType="OUTSIDE" strokeWidth="0.0">
+                        <font>
+                            <Font name="Roboto Medium" size="13.0"/>
+                        </font>
+                    </Text>
+                    <Text fx:id="numberOfCorrectAnswers1" fill="#d97100" layoutX="1073.0"
+                          layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                        <font>
+                            <Font name="Bebas Neue Regular" size="36.0"/>
+                        </font>
+                    </Text>
+                    <Text fx:id="correctAnswers1" fill="WHITE" layoutX="1036.0" layoutY="170.0"
+                          strokeType="OUTSIDE" strokeWidth="0.0">
+                        <font>
+                            <Font name="Roboto Medium" size="13.0"/>
+                        </font>
+                    </Text>
+                    <Text fx:id="numberOfCorrectAnswers2" fill="#d97100" layoutX="1096.0"
+                          layoutY="499.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                        <font>
+                            <Font name="Bebas Neue Regular" size="36.0"/>
+                        </font>
+                    </Text>
+                    <Text fx:id="correctAnswers2" fill="WHITE" layoutX="1036.0" layoutY="397.0"
+                          strokeType="OUTSIDE" strokeWidth="0.0">
+                        <font>
+                            <Font name="Roboto Medium" size="13.0"/>
+                        </font>
+                    </Text>
+                </AnchorPane>
+            </ScrollPane>
+        </AnchorPane>
+    </SplitPane>
+    <ImageView fitHeight="47.0" fitWidth="161.0" layoutX="28.0" layoutY="49.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@assets/AVEVA_logo.png"/>
+    </ImageView>
+    <Button fx:id="buttonMain" layoutX="38.0" layoutY="54.0" maxHeight="47.0" maxWidth="167.0" minHeight="47.0"
+            minWidth="142.0" mnemonicParsing="false" opacity="0.0" prefHeight="47.0" prefWidth="142.0"
+            AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="49.0"/>
+    <Text fx:id="userEmail" fill="#242424" layoutX="1683.9592302911908" layoutY="76.0" strokeType="OUTSIDE"
+          strokeWidth="0.0" AnchorPane.rightAnchor="103.8444806463092">
+        <font>
+            <Font name="Roboto Medium" size="13.0"/>
+        </font>
+    </Text>
+    <JFXButton fx:id="buttonSignOut" layoutX="1838.0" layoutY="56.0" prefHeight="31.0" prefWidth="70.0"
+               style="-fx-background-color: #f07d00;" textFill="WHITE" AnchorPane.rightAnchor="22.654547512590398">
+        <font>
+            <Font name="Roboto Medium" size="13.0"/>
+        </font>
+    </JFXButton>
+    <MenuBar style="-fx-background-color: #ffffff;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <Menu fx:id="menuLang" mnemonicParsing="false">
+            <MenuItem fx:id="langRus" mnemonicParsing="false"/>
+            <MenuItem fx:id="langEng" mnemonicParsing="false"/>
+        </Menu>
+        <Menu fx:id="menuTheme" mnemonicParsing="false">
+            <MenuItem fx:id="themeLight" mnemonicParsing="false"/>
+            <MenuItem fx:id="themeDark" mnemonicParsing="false"/>
+        </Menu>
+    </MenuBar>
+    <!--    @todo выянсить, что за линии ниже-->
+    <Line endX="1927.0" endY="0.9272842407226562" layoutX="-7.0" layoutY="27.0" startX="-55"
+          stroke="#eaeaea"/>
+    <Line endX="1918.87255859375" endY="7.62939453125E-6" layoutX="3.0" layoutY="115.0" startX="-55"
+          stroke="#eaeaea"/>
+</AnchorPane>

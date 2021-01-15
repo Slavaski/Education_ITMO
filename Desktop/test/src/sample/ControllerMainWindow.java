@@ -4,71 +4,108 @@ import com.jfoenix.controls.JFXButton;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.ImageView;
+import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.lang.reflect.Array;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.stream.Stream;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class ControllerMainWindow extends ControllerAuthWindow {
-
+    /**
+     * for decoration
+     */
     @FXML
-    private MenuItem mainThemeLight;
-
+    private Line lineUnderTextTestResults;
     @FXML
-    private MenuItem mainThemeDark;
-
+    private Line lineOverTextTestResults;
+    /**
+     * for localization
+     */
     @FXML
-    private MenuItem mainLangRus;
-
-    @FXML
-    private MenuItem mainLangEng;
-
-    @FXML
-    private Button MainButton;
-
+    private Text userEmail;
     @FXML
     private Text mainHeader;
-
     @FXML
     private Text mainMain;
-
+    /**
+     * menu
+     */
     @FXML
-    private JFXButton TestsButton;
-
+    private Menu menuLang;
     @FXML
-    private JFXButton TestResultsButton;
-
+    private Menu menuTheme;
     @FXML
-    private JFXButton HelpButton;
-
+    private MenuItem themeLight;
     @FXML
-    private Text UserEmail;
-
+    private MenuItem themeDark;
     @FXML
-    private Button LogoutButton;
+    private MenuItem langRus;
+    @FXML
+    private MenuItem langEng;
+    /**
+     * navigation
+     * it's already finished, but need to check
+     */
+    @FXML
+    private ImageView imageMain;
+    @FXML
+    private JFXButton buttonTests;
+    @FXML
+    private JFXButton buttonTestResults;
+    @FXML
+    private JFXButton buttonHelp;
+    @FXML
+    private Button buttonSignOut;
 
     @FXML
     void initialize() {
-        UserEmail.setText(login);
+        setAllText();
+        langRus.setOnAction(event -> {
+            langNumber = 1;
+            setAllText();
+        });
+        langEng.setOnAction(event -> {
+            langNumber = 2;
+            setAllText();
+        });
+        themeLight.setOnAction(event -> {
+            themeNumber = 1;
+            setScene();
+        });
+        themeDark.setOnAction(event -> {
+            themeNumber = 2;
+            setScene();
+        });
+
         mainMain.setLineSpacing(1.0);
-        mainMain.setWrappingWidth(1000);
-        mainHeader.setText(getLangSource("main_header", position));
-        mainMain.setText(getLangSource("main_main", position));
-        LogoutButton.setOnAction(event -> logout());
-        TestsButton.setOnAction(event -> goToTests());
-        HelpButton.setOnAction(event -> goToHelp());
-        TestResultsButton.setOnAction(event -> goToTestResults());
-        MainButton.setOnAction(event -> goToMain());
+        mainMain.setWrappingWidth(widthScreen / 2);
+        userEmail.setText(login);
+
+        buttonSignOut.setOnAction(event -> signOut());
+        buttonTests.setOnAction(event -> goToTests());
+        buttonHelp.setOnAction(event -> goToHelp());
+        buttonTestResults.setOnAction(event -> goToTestResults());
+        imageMain.setOnMouseClicked(event -> goToMain());
+    }
+
+    private void setScene(){
+        goToMain();
+    }
+
+    private void setAllText(){
+        menuLang.setText(getLangSource("menuLang"));
+        langRus.setText(getLangSource("langRus"));
+        langEng.setText(getLangSource("langEng"));
+        menuTheme.setText(getLangSource("menuTheme"));
+        themeLight.setText(getLangSource("themeLight"));
+        themeDark.setText(getLangSource("themeDark"));
+        mainHeader.setText(getLangSource("mainHeader"));
+        mainMain.setText(getLangSource("mainMain"));
+        buttonTests.setText(getLangSource("buttonTests"));
+        buttonTestResults.setText(getLangSource("buttonTestResults"));
+        buttonHelp.setText(getLangSource("buttonHelp"));
+        buttonSignOut.setText(getLangSource("buttonSignOut"));
     }
 }
