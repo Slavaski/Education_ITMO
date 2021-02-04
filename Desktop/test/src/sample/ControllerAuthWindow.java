@@ -32,6 +32,10 @@ public class ControllerAuthWindow extends Main {
     @FXML
     void initialize() {
         setAllText();
+        initButtons();
+    }
+
+    private void initButtons() {
         langRus.setOnAction(event -> {
             langNumber = 1;
             setAllText();
@@ -51,8 +55,15 @@ public class ControllerAuthWindow extends Main {
         buttonEnter.setOnAction(event -> {
             login = Login.getText().trim();
             password = Password.getText().trim();
-            if (getAndSetToken() == 200) goToMain();
-            else {
+            if (getAndSetToken() == 200) {
+                isAdmin = Boolean.valueOf(getDataFromAPI("role").trim());
+                if (isAdmin) {
+                    goToMain();
+                } else {
+                    goToMain();
+                    //@todo сюда добавлять осуществление перехода на нужную страницу
+                }
+            } else {
                 Alert badResponse = new Alert(Alert.AlertType.ERROR);
                 badResponse.setContentText(getLangSource("errorContentAlertLoginPassword"));
                 badResponse.setTitle(getLangSource("errorTitleAlertLoginPassword"));
@@ -78,14 +89,14 @@ public class ControllerAuthWindow extends Main {
     }
 
     private void setAllText() {
-        menuLang.setText(getLangSource("menuLang"));
         langRus.setText(getLangSource("langRus"));
         langEng.setText(getLangSource("langEng"));
-        menuTheme.setText(getLangSource("menuTheme"));
-        themeLight.setText(getLangSource("themeLight"));
-        themeDark.setText(getLangSource("themeDark"));
-        buttonEnter.setText(getLangSource("buttonSingIn"));
+        menuLang.setText(getLangSource("menuLang"));
         Login.setPromptText(getLangSource("login"));
+        menuTheme.setText(getLangSource("menuTheme"));
+        themeDark.setText(getLangSource("themeDark"));
+        themeLight.setText(getLangSource("themeLight"));
         Password.setPromptText(getLangSource("password"));
+        buttonEnter.setText(getLangSource("buttonSingIn"));
     }
 }

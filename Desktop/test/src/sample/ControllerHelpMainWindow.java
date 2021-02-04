@@ -49,9 +49,14 @@ public class ControllerHelpMainWindow extends ControllerAuthWindow {
     private JFXButton buttonProgramOverview;
     @FXML
     private JFXButton buttonWriteToDevelopers;
+
     @FXML
     void initialize() {
         setAllText();
+        initButtons();
+    }
+
+    private void initButtons() {
         langRus.setOnAction(event -> {
             langNumber = 1;
             setAllText();
@@ -68,7 +73,6 @@ public class ControllerHelpMainWindow extends ControllerAuthWindow {
             themeNumber = 2;
             setScene();
         });
-        userEmail.setText(login);
         buttonSignOut.setOnAction(event -> signOut());
         buttonTests.setOnAction(event -> goToTests());
         buttonHelp.setOnAction(event -> goToHelp());
@@ -78,22 +82,23 @@ public class ControllerHelpMainWindow extends ControllerAuthWindow {
         buttonWriteToDevelopers.setOnAction(event -> goToWriteToDevelopers());
     }
 
-    private void setScene(){
+    private void setScene() {
         goToHelp();
     }
 
-    private void setAllText(){
-        menuLang.setText(getLangSource("menuLang"));
+    private void setAllText() {
+        userEmail.setText(login);
         langRus.setText(getLangSource("langRus"));
         langEng.setText(getLangSource("langEng"));
+        menuLang.setText(getLangSource("menuLang"));
         menuTheme.setText(getLangSource("menuTheme"));
-        themeLight.setText(getLangSource("themeLight"));
         themeDark.setText(getLangSource("themeDark"));
-        buttonTests.setText(getLangSource("buttonTests"));
-        buttonTestResults.setText(getLangSource("buttonTestResults"));
+        themeLight.setText(getLangSource("themeLight"));
         buttonHelp.setText(getLangSource("buttonHelp"));
+        buttonTests.setText(getLangSource("buttonTests"));
         buttonSignOut.setText(getLangSource("buttonSignOut"));
         helpTitleAlert.setText(getLangSource("helpTitleAlert"));
+        buttonTestResults.setText(getLangSource("buttonTestResults"));
         buttonProgramOverview.setText(getLangSource("programOverview"));
         buttonWriteToDevelopers.setText(getLangSource("writeToDevelopers"));
     }

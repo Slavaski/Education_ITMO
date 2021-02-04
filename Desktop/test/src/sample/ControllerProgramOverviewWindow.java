@@ -47,6 +47,10 @@ public class ControllerProgramOverviewWindow extends ControllerAuthWindow {
     @FXML
     void initialize() {
         setAllText();
+        initButtons();
+    }
+
+    private void initButtons() {
         langRus.setOnAction(event -> {
             langNumber = 1;
             setAllText();
@@ -63,12 +67,11 @@ public class ControllerProgramOverviewWindow extends ControllerAuthWindow {
             themeNumber = 2;
             setScene();
         });
-        userEmail.setText(login);
+        buttonHelp.setOnAction(event -> goToHelp());
         buttonSignOut.setOnAction(event -> signOut());
         buttonTests.setOnAction(event -> goToTests());
-        buttonHelp.setOnAction(event -> goToHelp());
-        buttonTestResults.setOnAction(event -> goToTestResults());
         imageMain.setOnMouseClicked(event -> goToMain());
+        buttonTestResults.setOnAction(event -> goToTestResults());
     }
 
     private void setScene() {
@@ -76,6 +79,7 @@ public class ControllerProgramOverviewWindow extends ControllerAuthWindow {
     }
 
     private void setAllText() {
+        userEmail.setText(login);
         menuLang.setText(getLangSource("menuLang"));
         langRus.setText(getLangSource("langRus"));
         langEng.setText(getLangSource("langEng"));
@@ -85,7 +89,7 @@ public class ControllerProgramOverviewWindow extends ControllerAuthWindow {
         buttonTests.setText(getLangSource("buttonTests"));
         buttonTestResults.setText(getLangSource("buttonTestResults"));
         buttonHelp.setText(getLangSource("buttonHelp"));
-        buttonSignOut.setText(getLangSource("buttonSignOut"));//@todo вставить картинку
+        buttonSignOut.setText(getLangSource("buttonSignOut"));
         titleProgramOverview.setText(getLangSource("programOverview"));
         overview.setText("\n" + getLangSource("overview"));
     }

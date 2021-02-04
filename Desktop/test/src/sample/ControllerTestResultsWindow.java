@@ -11,6 +11,9 @@ import javafx.scene.text.Text;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class ControllerTestResultsWindow extends ControllerAuthWindow {
     /**
      * for localization
@@ -89,7 +92,6 @@ public class ControllerTestResultsWindow extends ControllerAuthWindow {
         evaluationCriteria.setOnMouseClicked(event -> {
             JSONArray jsonArray = new JSONArray(getDataFromAPI("test_all"));
             JSONObject jsonObject = jsonArray.getJSONObject(0);
-            //@todo make an alert
             Alert criteria = new Alert(Alert.AlertType.INFORMATION);
             criteria.setContentText(String.valueOf(jsonObject.get("description")));
             criteria.setTitle(getLangSource("evaluationCriteria"));
@@ -108,6 +110,9 @@ public class ControllerTestResultsWindow extends ControllerAuthWindow {
         JSONArray jsonArray = new JSONArray(getDataFromAPI("test_all"));
         JSONObject jsonObject = jsonArray.getJSONObject(0);
 
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        LocalDateTime now = LocalDateTime.now();
+
         menuLang.setText(getLangSource("menuLang"));
         langRus.setText(getLangSource("langRus"));
         langEng.setText(getLangSource("langEng"));
@@ -120,7 +125,7 @@ public class ControllerTestResultsWindow extends ControllerAuthWindow {
         buttonSignOut.setText(getLangSource("buttonSignOut"));
         textTestResults.setText(getLangSource("textTestResults"));
         evaluationCriteria.setText(getLangSource("evaluationCriteria"));
-        passedDate.setText(getLangSource("passedDate") + " 22.12.2020");//@todo надо сделать добавление даты, получаемой с серва
+        passedDate.setText(getLangSource("passedDate") + dtf.format(now));
         testTitle.setText(String.valueOf(jsonObject.get("name")).toUpperCase());
         countOfRightAnswers.setText(Main.countOfRightAnswers + "/2");//@todo вставлять result с test_result с серва
     }

@@ -15,52 +15,54 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Scanner;
 
 public class Main extends Application {
-    protected HashMap<Integer, String> answers = new HashMap<>();//@todo убрать и заменить на set
-    protected Set<String> answersSet = new HashSet<>(10, 1);
-    protected Scene activeScene, nextScene;
+    protected HashMap<Integer, String> answers = new HashMap<>();
+    protected Scene activeScene;
     private static Stage myStage;
     private static final Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
     private final double heightScreen = screenSize.getHeight() - 40; //40 - height of taskbar
     protected final double widthScreen = screenSize.getWidth();
 
-    protected static String login = "example@example.com";
-    protected static String password;
-    protected static final String URL = "https://flaskprojecttest.herokuapp.com/api/";
+    protected static String login = "";
+    protected static String password = "";
+    protected static final String URL_API = "https://flaskprojecttest.herokuapp.com/api/";
 
     protected static int langNumber = 1;//@todo 1-russian, 2-english
     protected static int themeNumber = 1;//@todo 1-light, 2-dark
     protected static JSONObject token = null;
 
+    protected static OkHttpClient client = new OkHttpClient();
+    protected static Boolean isAdmin = false;
+
     //
     public static int countOfRightAnswers = 0;
     //
 
+    //@todo удалить все комментарии или вынести в отдельный файл с пометкой, где было изначально
     @Override
     public void start(Stage primaryStage) throws Exception {
-//        Parent root = FXMLLoader.load(getClass().getResource("windowDarkMain.fxml"));
-//        getAndSetToken();
-//        Parent root = FXMLLoader.load(getClass().getResource("windowDarkTests.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("windowLightAuth.fxml"));
-//@todo удалить все комментарии или вынести в отдельный файл с пометкой, где было изначально
+//        Parent root = FXMLLoader.load(getClass().getResource("windowLightMain.fxml"));
+        getAndSetToken();
+        Parent root = FXMLLoader.load(getClass().getResource("windowLightWriteToDevelopers.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("windowLightAuth.fxml"));
         activeScene = new Scene(root);
         primaryStage.setScene(activeScene);
         myStage = primaryStage;
         myStage.setTitle(getLangSource("titleAuth"));
         myStage.getIcons().add(new Image("logo_little_without_borders.jpg"));
-        myStage.show();
+//        myStage.show();
         myStage.centerOnScreen();
     }
 
+    /**
+     * @return operation code from server
+     */
     protected int getAndSetToken() {
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder().url(URL + "token")
-                .addHeader("Authorization", Credentials.basic(login, password)).get().build();
-//                .addHeader("Authorization", Credentials.basic("kko1l@mail.ru", "B0Zgz5JzL")).get().build();
+        Request request = new Request.Builder().url(URL_API + "token")
+//                .addHeader("Authorization", Credentials.basic(login, password)).get().build();
+                .addHeader("Authorization", Credentials.basic("kko1l@mail.ru", "B0Zgz5JzL")).get().build();
         //kko1l@mail.ru  B0Zgz5JzL
         Call call = client.newCall(request);
         Response response;
@@ -76,12 +78,31 @@ public class Main extends Application {
         return 401;
     }
 
+    protected String deleteQueryToAPI(String lastPartOfURL, JSONObject content) {
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+        RequestBody body = RequestBody.create(JSON, content.toString());
+        Request request = new Request.Builder().url(URL_API + lastPartOfURL)
+                .addHeader("Authorization", Credentials.basic(token.getString("token"), ""))
+                .delete(body).build();
+        return createCallAndResponseAndExecute(request);
+    }
+
+    protected String postQueryToAPI(String lastPartOfURL, JSONObject content) {
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+        RequestBody body = RequestBody.create(JSON, content.toString());
+        Request request = new Request.Builder().url(URL_API + lastPartOfURL)
+                .addHeader("Authorization", Credentials.basic(token.getString("token"), ""))
+                .post(body).build();
+        return createCallAndResponseAndExecute(request);
+    }
+
     protected String getDataFromAPI(String lastPartOfURL) {
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder().url(URL + lastPartOfURL)
+        Request request = new Request.Builder().url(URL_API + lastPartOfURL)
                 .addHeader("Authorization", Credentials.basic(token.getString("token"), "")).get().build();
-        //@todo здесь просто меняется get() на post(RequestBody body) и на delete()/delete(RequestBody body)
-        //@todo https://square.github.io/okhttp/4.x/okhttp/okhttp3/-request-body/
+        return createCallAndResponseAndExecute(request);
+    }
+
+    private String createCallAndResponseAndExecute(Request request) {
         Call call = client.newCall(request);
         Response response;
         try {
@@ -185,35 +206,19 @@ public class Main extends Application {
         showAndTuneScene(root, getLangSource("titleTestResults"), false);
     }
 
-//    private void showAndTuneScene(Parent root, String title, Boolean isAuthNextScene) {
-//        if (isAuthNextScene) {
-//            nextScene = new Scene(root);
-//        } else {
-//            nextScene = new Scene(root, widthScreen, heightScreen);
-//        }
-//        myStage.setScene(nextScene);
-//        myStage.setTitle(title);
-////        myStage.setResizable(false);
-//        if (isAuthNextScene) {
-//            myStage.centerOnScreen();
-//        } else {
-//            myStage.setMaximized(true);
-//        }
-//        myStage.show();
-//    }
-
     protected void showAndTuneScene(Parent root, String title, Boolean isAuthNextScene) {
         if (isAuthNextScene) {
-            nextScene = new Scene(root);
+            activeScene = new Scene(root);
         } else {
-            nextScene = new Scene(root, widthScreen, heightScreen);
+            activeScene = new Scene(root, widthScreen, heightScreen);
         }
-        myStage.setScene(nextScene);
+        myStage.setScene(activeScene);
         myStage.setTitle(title);
-//        myStage.setResizable(false);
         if (isAuthNextScene) {
             myStage.centerOnScreen();
         } else {
+            myStage.setMaximized(true);
+            myStage.setMaximized(false);
             myStage.setMaximized(true);
         }
         myStage.show();

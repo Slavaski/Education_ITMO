@@ -80,8 +80,8 @@
       </font>
    </JFXButton>
 
-   <Line fx:id="lineOverTextTestResults" endX="1927.0" endY="0.93" layoutX="-7.0" layoutY="27.0" startX="-55" stroke="#eaeaea"/>
-   <Line fx:id="lineUnderTextTestResults" endX="1917.0" endY="-1" layoutX="3.0" layoutY="115.0" startX="-55" stroke="#eaeaea"/>
+   <Line endX="1927.0" endY="0.93" layoutX="-7.0" layoutY="27.0" startX="-55" stroke="#eaeaea"/>
+   <Line endX="1917.0" endY="-1" layoutX="3.0" layoutY="115.0" startX="-55" stroke="#eaeaea"/>
    <ImageView fx:id="imageMain" fitHeight="55.0" fitWidth="185.0" layoutX="30.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@assets/logo.jpg"/>
    </ImageView>

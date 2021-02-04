@@ -3,23 +3,13 @@ package sample;
 import com.jfoenix.controls.JFXButton;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
-import javafx.scene.image.ImageView;
-import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import javafx.scene.control.Menu;
+import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
+import javafx.scene.control.MenuItem;
 
 public class ControllerMainWindow extends ControllerAuthWindow {
-    /**
-     * for decoration
-     */
-    @FXML
-    private Line lineUnderTextTestResults;
-    @FXML
-    private Line lineOverTextTestResults;
     /**
      * for localization
      */
@@ -62,6 +52,10 @@ public class ControllerMainWindow extends ControllerAuthWindow {
     @FXML
     void initialize() {
         setAllText();
+        initButtons();
+    }
+
+    private void initButtons() {
         langRus.setOnAction(event -> {
             langNumber = 1;
             setAllText();
@@ -78,11 +72,6 @@ public class ControllerMainWindow extends ControllerAuthWindow {
             themeNumber = 2;
             setScene();
         });
-
-        mainMain.setLineSpacing(1.0);
-        mainMain.setWrappingWidth(widthScreen / 2);
-        userEmail.setText(login);
-
         buttonSignOut.setOnAction(event -> signOut());
         buttonTests.setOnAction(event -> goToTests());
         buttonHelp.setOnAction(event -> goToHelp());
@@ -90,11 +79,15 @@ public class ControllerMainWindow extends ControllerAuthWindow {
         imageMain.setOnMouseClicked(event -> goToMain());
     }
 
-    private void setScene(){
+    private void setScene() {
         goToMain();
     }
 
-    private void setAllText(){
+    private void setAllText() {
+        mainMain.setLineSpacing(1.0);
+        mainMain.setWrappingWidth(widthScreen / 2);
+        userEmail.setText(login);
+
         menuLang.setText(getLangSource("menuLang"));
         langRus.setText(getLangSource("langRus"));
         langEng.setText(getLangSource("langEng"));
