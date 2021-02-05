@@ -20,7 +20,7 @@ import java.util.Scanner;
 public class Main extends Application {
     protected HashMap<Integer, String> answers = new HashMap<>();
     protected Scene activeScene;
-    private static Stage myStage;
+    protected static Stage myStage;
     private static final Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
     private final double heightScreen = screenSize.getHeight() - 40; //40 - height of taskbar
     protected final double widthScreen = screenSize.getWidth();
@@ -46,13 +46,14 @@ public class Main extends Application {
 //        Parent root = FXMLLoader.load(getClass().getResource("windowLightMain.fxml"));
         getAndSetToken();
         Parent root = FXMLLoader.load(getClass().getResource("windowLightWriteToDevelopers.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("windowDarkWriteToDevelopers.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("windowLightAuth.fxml"));
         activeScene = new Scene(root);
         primaryStage.setScene(activeScene);
         myStage = primaryStage;
         myStage.setTitle(getLangSource("titleAuth"));
         myStage.getIcons().add(new Image("logo_little_without_borders.jpg"));
-//        myStage.show();
+        myStage.show();
         myStage.centerOnScreen();
     }
 
@@ -225,7 +226,7 @@ public class Main extends Application {
     }
 
     protected String getLangSource(String key) {
-        try (Scanner s = new Scanner(new BufferedReader(new FileReader("C:\\Users\\slava\\Desktop\\Education_ITMO\\Desktop\\test\\src\\sample\\ru_eng_sorted.txt")))) {
+        try (Scanner s = new Scanner(new BufferedReader(new FileReader("C:\\Users\\slava\\OneDrive\\Desktop\\Education_ITMO\\Desktop\\test\\src\\sample\\ru_eng_sorted.txt")))) {
             while (s.hasNextLine()) {
                 String buf = s.nextLine();
                 String[] array = buf.split(";");
