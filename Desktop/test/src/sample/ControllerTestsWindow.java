@@ -9,6 +9,9 @@ import javafx.scene.text.Text;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ControllerTestsWindow extends ControllerAuthWindow {
     /**
      * 1 test
@@ -107,13 +110,29 @@ public class ControllerTestsWindow extends ControllerAuthWindow {
     @FXML
     private Button buttonSignOut;
 
-    private int countOfTests = 3; //@todo ДАНЯ ДОЛЖЕН СДЕЛАТЬ - получать количество назначенных тестов
+    private int countOfTests = 0;
+    private JSONArray jsonArray = null;
 
     @FXML
     void initialize() {
-        setAllText();
+        jsonArray = new JSONArray(getDataFromAPI("test_all"));
         initButtons();
         refreshTests();
+        setAllText();
+        //
+        System.out.println(getDataFromAPIWithBody("id_test", "1"));
+    }
+
+    private JSONObject getAndSetJSONObjectSubject(JSONObject jsonObject) {
+        int test_subject_id = jsonObject.getInt("test_subject_id");
+        JSONArray jsonArraySubjects =  new JSONArray(getDataFromAPI("subject_all"));
+        JSONObject result = null;
+        for (int i = 0; i < jsonArraySubjects.length(); i++){
+            if (test_subject_id == jsonArraySubjects.getJSONObject(i).getInt("id")) {
+                result = jsonArraySubjects.getJSONObject(i);
+            }
+        }
+        return result;
     }
 
     private void initButtons() {
@@ -136,10 +155,11 @@ public class ControllerTestsWindow extends ControllerAuthWindow {
 
         testInfoSpec1.setUnderline(true);
         testInfoSpec1.setOnMouseClicked(event -> {
-            JSONArray jsonArray = new JSONArray(getDataFromAPI("test_all"));
             JSONObject jsonObject = jsonArray.getJSONObject(0);
             Alert criteria = new Alert(Alert.AlertType.INFORMATION);
-            criteria.setContentText(String.valueOf(jsonObject.get("description")));//@todo вставлять description с test_subject или description с tests
+            criteria.setContentText(String.valueOf(
+                    getAndSetJSONObjectSubject(jsonObject)
+                            .get("name")));
             criteria.setTitle(getLangSource("testInfo"));
             criteria.setHeaderText("");
             criteria.show();
@@ -147,16 +167,27 @@ public class ControllerTestsWindow extends ControllerAuthWindow {
             criteria.setY(200.0);
         });
         buttonGoToTest1.setOnAction(event -> {
+//            добавить номер теста, для получения теста с серва @todo
+            nameActiveTest = testTitle1.getText(); //second test
+            int index;
+            for (index = 0; index < jsonArray.length(); index++){
+                if (jsonArray.getJSONObject(index).getString("name").equals(nameActiveTest)) {
+                    index = jsonArray.getJSONObject(index).getInt("id");
+                    break;
+                }
+            }
+            numberActiveTest = index;
             goToQuestions();
-            countOfRightAnswers = 0;
         });
 
         testInfoSpec2.setUnderline(true);
         testInfoSpec2.setOnMouseClicked(event -> {
-            JSONArray jsonArray = new JSONArray(getDataFromAPI("test_all"));
             JSONObject jsonObject = jsonArray.getJSONObject(1);
+
             Alert criteria = new Alert(Alert.AlertType.INFORMATION);
-            criteria.setContentText(String.valueOf(jsonObject.get("description")));//@todo вставлять description с test_subject или description с tests
+            criteria.setContentText(String.valueOf(
+                    getAndSetJSONObjectSubject(jsonObject)
+                            .get("name")));
             criteria.setTitle(getLangSource("testInfo"));
             criteria.setHeaderText("");
             criteria.show();
@@ -165,15 +196,16 @@ public class ControllerTestsWindow extends ControllerAuthWindow {
         });
         buttonGoToTest2.setOnAction(event -> {
             goToQuestions();
-            countOfRightAnswers = 0;
         });
 
         testInfoSpec3.setUnderline(true);
         testInfoSpec3.setOnMouseClicked(event -> {
-            JSONArray jsonArray = new JSONArray(getDataFromAPI("test_all"));
             JSONObject jsonObject = jsonArray.getJSONObject(2);
+
             Alert criteria = new Alert(Alert.AlertType.INFORMATION);
-            criteria.setContentText(String.valueOf(jsonObject.get("description")));//@todo вставлять description с test_subject или description с tests
+            criteria.setContentText(String.valueOf(
+                    getAndSetJSONObjectSubject(jsonObject)
+                            .get("name")));
             criteria.setTitle(getLangSource("testInfo"));
             criteria.setHeaderText("");
             criteria.show();
@@ -182,15 +214,16 @@ public class ControllerTestsWindow extends ControllerAuthWindow {
         });
         buttonGoToTest3.setOnAction(event -> {
             goToQuestions();
-            countOfRightAnswers = 0;
         });
 
         testInfoSpec4.setUnderline(true);
         testInfoSpec4.setOnMouseClicked(event -> {
-            JSONArray jsonArray = new JSONArray(getDataFromAPI("test_all"));
-            JSONObject jsonObject = jsonArray.getJSONObject(3);
+            JSONObject jsonObject = jsonArray.getJSONObject(3);//@todo переделать под те, которые доступны пользователю
+
             Alert criteria = new Alert(Alert.AlertType.INFORMATION);
-            criteria.setContentText(String.valueOf(jsonObject.get("description")));//@todo вставлять description с test_subject или description с tests
+            criteria.setContentText(String.valueOf(
+                    getAndSetJSONObjectSubject(jsonObject)
+                            .get("name")));
             criteria.setTitle(getLangSource("testInfo"));
             criteria.setHeaderText("");
             criteria.show();
@@ -199,14 +232,13 @@ public class ControllerTestsWindow extends ControllerAuthWindow {
         });
         buttonGoToTest4.setOnAction(event -> {
             goToQuestions();
-            countOfRightAnswers = 0;
         });
 
-        buttonSignOut.setOnAction(event -> signOut());
         buttonHelp.setOnAction(event -> goToHelp());
-        buttonTestResults.setOnAction(event -> goToTestResults());
-        imageMain.setOnMouseClicked(event -> goToMain());
         buttonTests.setOnAction(event -> goToTests());
+        buttonSignOut.setOnAction(event -> signOut());
+        imageMain.setOnMouseClicked(event -> goToMain());
+        buttonTestResults.setOnAction(event -> goToTestResults());
     }
 
     private void setScene() {
@@ -226,8 +258,6 @@ public class ControllerTestsWindow extends ControllerAuthWindow {
         buttonHelp.setText(getLangSource("buttonHelp"));
         buttonSignOut.setText(getLangSource("buttonSignOut"));
         availableTests.setText(getLangSource("availableTests"));
-
-        JSONArray jsonArray = new JSONArray(getDataFromAPI("test_all"));//@todo переделать под те тесты, которые назначены пользователю
 
         for (int i = 0; i < countOfTests; i++) {
             switch (i) {
@@ -266,6 +296,8 @@ public class ControllerTestsWindow extends ControllerAuthWindow {
     }
 
     private void refreshTests() {
+        countOfTests = jsonArray.length();
+
         for (int i = 1; i < 5 - countOfTests; i++) {
             switch (i) {
                 case 1:

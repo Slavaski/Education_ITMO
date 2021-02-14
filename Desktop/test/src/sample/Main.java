@@ -15,15 +15,16 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main extends Application {
     protected HashMap<Integer, String> answers = new HashMap<>();
     protected Scene activeScene;
     protected static Stage myStage;
-    private static final Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-    private final double heightScreen = screenSize.getHeight() - 40; //40 - height of taskbar
-    protected final double widthScreen = screenSize.getWidth();
+    private static final Dimension SCREEN_SIZE = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+    protected final double HEIGHT_SCREEN = SCREEN_SIZE.getHeight() - 40; //40 - height of taskbar
+    protected final double WIDTH_SCREEN = SCREEN_SIZE.getWidth();
 
     protected static String login = "";
     protected static String password = "";
@@ -36,24 +37,22 @@ public class Main extends Application {
     protected static OkHttpClient client = new OkHttpClient();
     protected static Boolean isAdmin = false;
 
-    //
-    public static int countOfRightAnswers = 0;
-    //
+    protected int numberActiveTest = 0;
+    protected String nameActiveTest = ""; //id_test
 
     //@todo удалить все комментарии или вынести в отдельный файл с пометкой, где было изначально
     @Override
     public void start(Stage primaryStage) throws Exception {
 //        Parent root = FXMLLoader.load(getClass().getResource("windowLightMain.fxml"));
         getAndSetToken();
-        Parent root = FXMLLoader.load(getClass().getResource("windowLightWriteToDevelopers.fxml"));
-//        Parent root = FXMLLoader.load(getClass().getResource("windowDarkWriteToDevelopers.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("windowLightTests.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("windowLightAuth.fxml"));
         activeScene = new Scene(root);
         primaryStage.setScene(activeScene);
         myStage = primaryStage;
         myStage.setTitle(getLangSource("titleAuth"));
         myStage.getIcons().add(new Image("logo_little_without_borders.jpg"));
-        myStage.show();
+//        myStage.show();
         myStage.centerOnScreen();
     }
 
@@ -82,6 +81,7 @@ public class Main extends Application {
     protected String deleteQueryToAPI(String lastPartOfURL, JSONObject content) {
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
         RequestBody body = RequestBody.create(JSON, content.toString());
+
         Request request = new Request.Builder().url(URL_API + lastPartOfURL)
                 .addHeader("Authorization", Credentials.basic(token.getString("token"), ""))
                 .delete(body).build();
@@ -91,6 +91,7 @@ public class Main extends Application {
     protected String postQueryToAPI(String lastPartOfURL, JSONObject content) {
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
         RequestBody body = RequestBody.create(JSON, content.toString());
+
         Request request = new Request.Builder().url(URL_API + lastPartOfURL)
                 .addHeader("Authorization", Credentials.basic(token.getString("token"), ""))
                 .post(body).build();
@@ -99,7 +100,31 @@ public class Main extends Application {
 
     protected String getDataFromAPI(String lastPartOfURL) {
         Request request = new Request.Builder().url(URL_API + lastPartOfURL)
-                .addHeader("Authorization", Credentials.basic(token.getString("token"), "")).get().build();
+                .addHeader("Authorization", Credentials.basic(token.getString("token"), ""))
+                .get().build();
+        return createCallAndResponseAndExecute(request);
+    }
+
+    protected String getDataFromAPIWithBody(String lastPartOfURL, String value) {
+        HttpUrl httpUrl = new HttpUrl.Builder()
+                .scheme("https")
+                .host("flaskprojecttest.herokuapp.com")
+                .addPathSegment("api")
+                .addPathSegment(lastPartOfURL)
+                .addQueryParameter("id", value)
+                .setQueryParameter("id", value)
+                .addEncodedQueryParameter("id", value)
+                .setEncodedQueryParameter("id", value)
+                .build();
+
+        System.out.println(httpUrl.toString());
+
+        Request request = new Request.Builder()
+                .addHeader("Accept", "application/json")
+                .addHeader("Authorization", Credentials.basic(token.getString("token"), ""))
+                .addHeader("id", value)
+                .url(httpUrl)
+                .build();
         return createCallAndResponseAndExecute(request);
     }
 
@@ -211,7 +236,7 @@ public class Main extends Application {
         if (isAuthNextScene) {
             activeScene = new Scene(root);
         } else {
-            activeScene = new Scene(root, widthScreen, heightScreen);
+            activeScene = new Scene(root, WIDTH_SCREEN, HEIGHT_SCREEN);
         }
         myStage.setScene(activeScene);
         myStage.setTitle(title);

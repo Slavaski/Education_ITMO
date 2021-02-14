@@ -74,11 +74,10 @@ public class ControllerTestWindow extends ControllerAuthWindow {
 //                    answers.put(1, "3");
 //                    answersSet.add("3");
 //                }
-                if (RadioButton4.isSelected()) {
+//                if (RadioButton4.isSelected()) {
 //                    answers.put(1, "4");
 //                    answersSet.add("4");
-                    countOfRightAnswers += 1;
-                }
+//                }
                 //
                 Parent root = null;
                 try {
@@ -140,9 +139,6 @@ public class ControllerTestWindow extends ControllerAuthWindow {
 //                CheckBoxButton5.setDisable(true);
 //                Answer.setVisible(false);
 //                System.out.println(answers.values());
-                if (CheckBoxButton1.isSelected() && CheckBoxButton2.isSelected() && !CheckBoxButton3.isSelected() && CheckBoxButton4.isSelected() && !CheckBoxButton5.isSelected()) {
-                    countOfRightAnswers += 1;
-                }
                 //
                 Parent root = null;
                 try {

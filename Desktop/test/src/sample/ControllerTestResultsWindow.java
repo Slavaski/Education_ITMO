@@ -81,8 +81,6 @@ public class ControllerTestResultsWindow extends ControllerAuthWindow {
             themeNumber = 2;
             setScene();
         });
-        userEmail.setText(login);
-        evaluationCriteria.setUnderline(true);
 
         buttonSignOut.setOnAction(event -> signOut());
         buttonTests.setOnAction(event -> goToTests());
@@ -113,6 +111,8 @@ public class ControllerTestResultsWindow extends ControllerAuthWindow {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         LocalDateTime now = LocalDateTime.now();
 
+        userEmail.setText(login);
+        evaluationCriteria.setUnderline(true);
         menuLang.setText(getLangSource("menuLang"));
         langRus.setText(getLangSource("langRus"));
         langEng.setText(getLangSource("langEng"));
@@ -127,7 +127,8 @@ public class ControllerTestResultsWindow extends ControllerAuthWindow {
         evaluationCriteria.setText(getLangSource("evaluationCriteria"));
         passedDate.setText(getLangSource("passedDate") + dtf.format(now));
         testTitle.setText(String.valueOf(jsonObject.get("name")).toUpperCase());
-        countOfRightAnswers.setText(Main.countOfRightAnswers + "/2");//@todo вставлять result с test_result с серва
+        countOfRightAnswers.setText("" + "/2");//@todo вставлять result с test_result с серва
+
     }
 }
 

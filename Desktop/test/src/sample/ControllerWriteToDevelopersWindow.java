@@ -3,10 +3,7 @@ package sample;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
@@ -21,25 +18,25 @@ import javax.activation.*;
 
 public class ControllerWriteToDevelopersWindow extends ControllerAuthWindow {
     @FXML
-    private JFXTextArea enterLetter;
-    @FXML
-    private JFXButton comment;
-    @FXML
-    private JFXButton wish;
-    @FXML
-    private JFXButton another;
-    @FXML
-    private JFXButton claim;
-    @FXML
     private Text nameFile;
     @FXML
     private Rectangle rectFile;
     @FXML
-    private JFXButton buttonDeleteFile;
+    private JFXTextArea enterLetter;
+    @FXML
+    private JFXButton wish;
+    @FXML
+    private JFXButton claim;
+    @FXML
+    private JFXButton comment;
+    @FXML
+    private JFXButton another;
+    @FXML
+    private JFXButton buttonSend;
     @FXML
     private JFXButton buttonAddFile;
     @FXML
-    private JFXButton buttonSend;
+    private JFXButton buttonDeleteFile;
     /**
      * for localization
      */
@@ -118,24 +115,28 @@ public class ControllerWriteToDevelopersWindow extends ControllerAuthWindow {
         buttonTestResults.setOnAction(event -> goToTestResults());
         buttonSend.setOnAction(event -> {
             Alert a = new Alert(Alert.AlertType.CONFIRMATION);
-            a.setContentText(getLangSource("helpContentAlert"));
-            a.setTitle(getLangSource("helpTitleAlert"));
+            a.setContentText(getLangSource("confirmationContentSendEmail"));
+            a.setTitle(getLangSource("confirmationTitleSendEmail"));
             a.setHeaderText("");
-            a.show();
-            a.setHeight(230.0);
-            a.setY(200.0);
-            //@todo уточнить, что отправка может занять некоторое время и программа не будет отвечать на действия - нужно просто подождать (зависит от интернета, серверов, компа)
+            a.setHeight(400.0);
+            a.setWidth(400.0);
+            a.setX((WIDTH_SCREEN / 2) - (a.getWidth() / 2));
+            a.setY((HEIGHT_SCREEN / 2) - (a.getHeight() / 2));
 
-            sendEmail();
+            Optional<ButtonType> action = a.showAndWait();
+            if (action.get() == ButtonType.OK) {
+                sendEmail();
 
-            Alert b = new Alert(Alert.AlertType.INFORMATION);
-            b.setContentText(getLangSource("helpContentAlert"));
-            b.setTitle(getLangSource("helpTitleAlert"));
-            b.setHeaderText("");
-            b.show();
-            b.setHeight(230.0);
-            b.setY(200.0);
-            //@todo подтвердить отправку сообщения и поблагодарить за отзыв
+                Alert b = new Alert(Alert.AlertType.INFORMATION);
+                b.setContentText(getLangSource("confirmationContentSuccess"));
+                b.setTitle(getLangSource("confirmationTitleSuccess"));
+                b.setHeaderText("");
+                b.show();
+                a.setHeight(400.0);
+                a.setWidth(400.0);
+                a.setX((WIDTH_SCREEN / 2) - (a.getWidth() / 2));
+                a.setY((HEIGHT_SCREEN / 2) - (a.getHeight() / 2));
+            }
         });
         buttonAddFile.setOnAction(event -> {
             FileChooser file = new FileChooser();
@@ -144,7 +145,8 @@ public class ControllerWriteToDevelopersWindow extends ControllerAuthWindow {
                     new FileChooser.ExtensionFilter("Image File", "*.png", "*.jpg", "*.gif", "*.bmp")
             );
             File file1 = file.showOpenDialog(myStage);
-            if (file1 != null) {
+            int maxSizeOfFile = 10_485_760;
+            if (file1 != null && file1.length() <= maxSizeOfFile) {
                 nameOfFile = file1.getName();
                 nameFile.setText(nameOfFile);
                 nameOfFileWithPath = file1.getAbsolutePath();
@@ -152,12 +154,36 @@ public class ControllerWriteToDevelopersWindow extends ControllerAuthWindow {
                 buttonAddFile.setDisable(true);
                 buttonAddFile.setVisible(false);
 
+                double neededWidth = nameOfFile.length() * 8 + 10;
+                if (neededWidth <= 100) {
+                    neededWidth += 30;
+                }
+                if (neededWidth >= enterLetter.getWidth()) {
+                    nameFile.setText("Name of chosen file too long");
+                    neededWidth = nameFile.getText().length() * 8 + 10;
+                }
+
+                rectFile.setWidth(neededWidth);
+                nameFile.setWrappingWidth(neededWidth);
+                buttonDeleteFile.setLayoutX(buttonDeleteFile.getWidth() + rectFile.getWidth() - 5);
+
                 rectFile.setVisible(true);
                 rectFile.setDisable(false);
                 nameFile.setVisible(true);
                 nameFile.setDisable(false);
                 buttonDeleteFile.setVisible(true);
                 buttonDeleteFile.setDisable(false);
+            }
+            if (file1 != null && file1.length() > maxSizeOfFile) {
+                Alert a = new Alert(Alert.AlertType.ERROR);
+                a.setContentText(getLangSource("errorContentAlertSizeOfFile"));
+                a.setTitle(getLangSource("errorTitleAlertSizeOfFile"));
+                a.setHeaderText("");
+                a.setHeight(400.0);
+                a.setWidth(400.0);
+                a.setX((WIDTH_SCREEN / 2) - (a.getWidth() / 2));
+                a.setY((HEIGHT_SCREEN / 2) - (a.getHeight() / 2));
+                a.show();
             }
         });
         buttonDeleteFile.setOnAction(event -> {
@@ -175,103 +201,52 @@ public class ControllerWriteToDevelopersWindow extends ControllerAuthWindow {
             buttonAddFile.setDisable(false);
             buttonAddFile.setVisible(true);
         });
-
         wish.setOnAction(event -> {
-            if (themeNumber == 1) {
-                wish.setStyle("-fx-background-color: #006fb7; -fx-border-color: #000000;");
-                another.setStyle("-fx-background-color: #FFFFFF; -fx-border-color: #006fb7;");
-                claim.setStyle("-fx-background-color: #FFFFFF; -fx-border-color: #006fb7;");
-                comment.setStyle("-fx-background-color: #FFFFFF; -fx-border-color: #006fb7;");
-
-                wish.setTextFill(Paint.valueOf("#000000"));
-                another.setTextFill(Paint.valueOf("#006fb7"));
-                claim.setTextFill(Paint.valueOf("#006fb7"));
-                comment.setTextFill(Paint.valueOf("#006fb7"));
-            } else {
-                wish.setStyle("-fx-background-color: #a0a0a0; -fx-border-color: #C0C0C0;");
-                another.setStyle("-fx-background-color: #424242; -fx-border-color: #a0a0a0;");
-                claim.setStyle("-fx-background-color: #424242; -fx-border-color: #a0a0a0;");
-                comment.setStyle("-fx-background-color: #424242; -fx-border-color: #a0a0a0;");
-
-                wish.setTextFill(Paint.valueOf("#1B1B1B"));
-                another.setTextFill(Paint.valueOf("#a0a0a0"));
-                claim.setTextFill(Paint.valueOf("#a0a0a0"));
-                comment.setTextFill(Paint.valueOf("#a0a0a0"));
-            }
+            setStyleForSubjectButtons(wish);
             subject = getLangSource("wish");
         });
         another.setOnAction(event -> {
-            if (themeNumber == 1) {
-                wish.setStyle("-fx-background-color: #FFFFFF; -fx-border-color: #006fb7;");
-                another.setStyle("-fx-background-color: #006fb7; -fx-border-color: #000000;");
-                claim.setStyle("-fx-background-color: #FFFFFF; -fx-border-color: #006fb7;");
-                comment.setStyle("-fx-background-color: #FFFFFF; -fx-border-color: #006fb7;");
-
-                wish.setTextFill(Paint.valueOf("#006fb7"));
-                another.setTextFill(Paint.valueOf("#000000"));
-                claim.setTextFill(Paint.valueOf("#006fb7"));
-                comment.setTextFill(Paint.valueOf("#006fb7"));
-            } else {
-                wish.setStyle("-fx-background-color: #424242; -fx-border-color: #a0a0a0;");
-                another.setStyle("-fx-background-color: #a0a0a0; -fx-border-color: #C0C0C0;");
-                claim.setStyle("-fx-background-color: #424242; -fx-border-color: #a0a0a0;");
-                comment.setStyle("-fx-background-color: #424242; -fx-border-color: #a0a0a0;");
-
-                wish.setTextFill(Paint.valueOf("#a0a0a0"));
-                another.setTextFill(Paint.valueOf("#1B1B1B"));
-                claim.setTextFill(Paint.valueOf("#a0a0a0"));
-                comment.setTextFill(Paint.valueOf("#a0a0a0"));
-            }
+            setStyleForSubjectButtons(another);
             subject = getLangSource("another");
         });
         claim.setOnAction(event -> {
-            if (themeNumber == 1) {
-                wish.setStyle("-fx-background-color: #FFFFFF; -fx-border-color: #006fb7;");
-                another.setStyle("-fx-background-color: #FFFFFF; -fx-border-color: #006fb7;");
-                claim.setStyle("-fx-background-color: #006fb7; -fx-border-color: #000000;");
-                comment.setStyle("-fx-background-color: #FFFFFF; -fx-border-color: #006fb7;");
-
-                wish.setTextFill(Paint.valueOf("#006fb7"));
-                another.setTextFill(Paint.valueOf("#006fb7"));
-                claim.setTextFill(Paint.valueOf("#000000"));
-                comment.setTextFill(Paint.valueOf("#006fb7"));
-            } else {
-                wish.setStyle("-fx-background-color: #424242; -fx-border-color: #a0a0a0;");
-                another.setStyle("-fx-background-color: #424242; -fx-border-color: #a0a0a0;");
-                claim.setStyle("-fx-background-color: #a0a0a0; -fx-border-color: #C0C0C0;");
-                comment.setStyle("-fx-background-color: #424242; -fx-border-color: #a0a0a0;");
-
-                wish.setTextFill(Paint.valueOf("#a0a0a0"));
-                another.setTextFill(Paint.valueOf("#a0a0a0"));
-                claim.setTextFill(Paint.valueOf("#1B1B1B"));
-                comment.setTextFill(Paint.valueOf("#a0a0a0"));
-            }
+            setStyleForSubjectButtons(claim);
             subject = getLangSource("claim");
         });
         comment.setOnAction(event -> {
-            if (themeNumber == 1) {
-                wish.setStyle("-fx-background-color: #FFFFFF; -fx-border-color: #006fb7;");
-                another.setStyle("-fx-background-color: #FFFFFF; -fx-border-color: #006fb7;");
-                claim.setStyle("-fx-background-color: #FFFFFF; -fx-border-color: #006fb7;");
-                comment.setStyle("-fx-background-color: #006fb7; -fx-border-color: #000000;");
-
-                wish.setTextFill(Paint.valueOf("#006fb7"));
-                another.setTextFill(Paint.valueOf("#006fb7"));
-                claim.setTextFill(Paint.valueOf("#006fb7"));
-                comment.setTextFill(Paint.valueOf("#000000"));
-            } else {
-                wish.setStyle("-fx-background-color: #424242; -fx-border-color: #a0a0a0;");
-                another.setStyle("-fx-background-color: #424242; -fx-border-color: #a0a0a0;");
-                claim.setStyle("-fx-background-color: #424242; -fx-border-color: #a0a0a0;");
-                comment.setStyle("-fx-background-color: #a0a0a0; -fx-border-color: #C0C0C0;");
-
-                wish.setTextFill(Paint.valueOf("#a0a0a0"));
-                another.setTextFill(Paint.valueOf("#a0a0a0"));
-                claim.setTextFill(Paint.valueOf("#a0a0a0"));
-                comment.setTextFill(Paint.valueOf("#1B1B1B"));
-            }
+            setStyleForSubjectButtons(comment);
             subject = getLangSource("comment");
         });
+    }
+
+    private void setStyleForSubjectButtons(JFXButton button) {
+        if (themeNumber == 1) {
+            wish.setStyle("-fx-background-color: #FFFFFF; -fx-border-color: #006fb7;");
+            another.setStyle("-fx-background-color: #FFFFFF; -fx-border-color: #006fb7;");
+            claim.setStyle("-fx-background-color: #FFFFFF; -fx-border-color: #006fb7;");
+            comment.setStyle("-fx-background-color: #FFFFFF; -fx-border-color: #006fb7;");
+
+            wish.setTextFill(Paint.valueOf("#006fb7"));
+            another.setTextFill(Paint.valueOf("#006fb7"));
+            claim.setTextFill(Paint.valueOf("#006fb7"));
+            comment.setTextFill(Paint.valueOf("#006fb7"));
+
+            button.setTextFill(Paint.valueOf("#000000"));
+            button.setStyle("-fx-background-color: #006fb7; -fx-border-color: #000000;");
+        } else {
+            wish.setStyle("-fx-background-color: #424242; -fx-border-color: #a0a0a0;");
+            another.setStyle("-fx-background-color: #424242; -fx-border-color: #a0a0a0;");
+            claim.setStyle("-fx-background-color: #424242; -fx-border-color: #a0a0a0;");
+            comment.setStyle("-fx-background-color: #424242; -fx-border-color: #a0a0a0;");
+
+            wish.setTextFill(Paint.valueOf("#a0a0a0"));
+            another.setTextFill(Paint.valueOf("#a0a0a0"));
+            claim.setTextFill(Paint.valueOf("#a0a0a0"));
+            comment.setTextFill(Paint.valueOf("#a0a0a0"));
+
+            button.setTextFill(Paint.valueOf("#1B1B1B"));
+            button.setStyle("-fx-background-color: #a0a0a0; -fx-border-color: #C0C0C0;");
+        }
     }
 
     private void setScene() {
@@ -290,6 +265,7 @@ public class ControllerWriteToDevelopersWindow extends ControllerAuthWindow {
         menuTheme.setText(getLangSource("menuTheme"));
         themeDark.setText(getLangSource("themeDark"));
         buttonHelp.setText(getLangSource("buttonHelp"));
+        buttonSend.setText(getLangSource("buttonSend"));
         themeLight.setText(getLangSource("themeLight"));
         buttonTests.setText(getLangSource("buttonTests"));
         buttonSignOut.setText(getLangSource("buttonSignOut"));

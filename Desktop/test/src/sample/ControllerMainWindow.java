@@ -85,7 +85,7 @@ public class ControllerMainWindow extends ControllerAuthWindow {
 
     private void setAllText() {
         mainMain.setLineSpacing(1.0);
-        mainMain.setWrappingWidth(widthScreen / 2);
+        mainMain.setWrappingWidth(WIDTH_SCREEN / 2);
         userEmail.setText(login);
 
         menuLang.setText(getLangSource("menuLang"));

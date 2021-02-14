@@ -10,8 +10,14 @@ buttonTestResults;Результаты тестов;Test results
 button_answer;Ответить;Submit
 claim;Претензия;Claim
 comment;Комментарий;Comment
+confirmationContentSendEmail;Отправка сообщения может занять некоторое время, программа не будет отвечать на какие-либо действия. Необходимо просто подождать. Просим отнестить с пониманием. Время отправки зависит от скорости интернета, от производительности компьютера, от размера файла и некоторых других факторов. После отправки сообщения будет выведено дополнительное информационное окно, сообщающее, что программа работает и сообщение успешно отправлено. Вы уверены, что хотите отправить сообщение?;It may take some time for the message to be sent, the program will not respond to any actions. You just have to wait. Please treat with understanding. The sending time depends on the speed of the Internet, on the performance of the computer, on the size of the file and some other factors.  After sending the message, an additional an information window informing that the program is running and the message has been successfully sent. Are you sure you want to send a message?
+confirmationTitleSendEmail;Вы уверены, что хотите отправить сообщение?;Are you sure you want to send a message?
+confirmationContentSuccess;Сообщение успешно отправлено. Благодарим за отзыв! Он будет обработан в ближайшее время.;Message sent successfully. Thank you for your feedback! It will be processed shortly.
+confirmationTitleSuccess;Сообщение успешно отправлено.;Message sent successfully.
 correctAnswers;Правильных ответов;Correct answers
 enterLetter;Введите текст письма...;Enter the text of the letter...
+errorContentAlertSizeOfFile;Размер файла не должен превышать 10Мб (мегабайт) или 10_485_760 байт.;The file size must not exceed 10MB (megabytes) or 10_485_760 bytes.
+errorTitleAlertSizeOfFile;Слишком большой размер файла.;Слишком большой размер файла.
 errorContentAlertLoginPassword;Пара логин-пароль не подходит.;Login-password pair is not suitable.
 errorTitleAlertLoginPassword;Ошибка авторизации.;Authorization error.
 evaluationCriteria;Критерии оценивания;Evaluation criteria

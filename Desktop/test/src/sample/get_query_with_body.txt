@@ -1,0 +1,56 @@
+1 способ. createCallAndResponseAndExecute везде одинаковая.
+protected String getDataFromAPIWithBody(String lastPartOfURL, JSONObject content) {
+    MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+    RequestBody body = RequestBody.create(JSON, content.toString());
+
+    Request request = new Request.Builder().url(URL_API + lastPartOfURL)
+            .addHeader("Authorization", Credentials.basic(token.getString("token"), ""))
+            .method("GET", body).build();
+    return createCallAndResponseAndExecute(request);
+}
+
+private String createCallAndResponseAndExecute(Request request) {
+    Call call = client.newCall(request);
+    Response response;
+    try {
+        response = call.execute();
+        return response.body().string();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    return null;
+}
+
+2 способ.
+protected String getDataFromAPIWithBody(String lastPartOfURL, String key, String value) {
+	HttpUrl.Builder httpBuilder = HttpUrl.parse(URL_API + lastPartOfURL).newBuilder().addQueryParameter(key, value);
+			
+	Request request = new Request.Builder().url(httpBuilder.build()).addHeader("Authorization", Credentials.basic(token.getString("token"), "")).build();
+
+	return createCallAndResponseAndExecute(request);
+}
+
+3 способ.
+protected String getDataFromAPIWithBody(String lastPartOfURL, String value) {
+    HttpUrl httpUrl = new HttpUrl.Builder()
+            .scheme("https")
+            .host("flaskprojecttest.herokuapp.com")
+            .addPathSegment("api")
+            .addPathSegment(lastPartOfURL)
+            .addQueryParameter("id", value)
+            .setQueryParameter("id", value)
+            .addEncodedQueryParameter("id", value)
+            .setEncodedQueryParameter("id", value)
+            .build();
+			//любая комбинация QueryParameter не работает
+
+    System.out.println(httpUrl.toString());
+
+    Request request = new Request.Builder()
+            .addHeader("Accept", "application/json")
+            .addHeader("Authorization", Credentials.basic(token.getString("token"), ""))
+            .addHeader("id", value)
+            .url(httpUrl)
+            .build();
+    return createCallAndResponseAndExecute(request);
+}
