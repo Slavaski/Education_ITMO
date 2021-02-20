@@ -38,7 +38,7 @@ public class Main extends Application {
     protected static Boolean isAdmin = false;
 
     protected int numberActiveTest = 0;
-    protected String nameActiveTest = ""; //id_test
+    protected String nameActiveTest = "";
 
     //@todo удалить все комментарии или вынести в отдельный файл с пометкой, где было изначально
     @Override
@@ -47,13 +47,9 @@ public class Main extends Application {
         getAndSetToken();
         Parent root = FXMLLoader.load(getClass().getResource("windowLightTests.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("windowLightAuth.fxml"));
-        activeScene = new Scene(root);
-        primaryStage.setScene(activeScene);
         myStage = primaryStage;
-        myStage.setTitle(getLangSource("titleAuth"));
         myStage.getIcons().add(new Image("logo_little_without_borders.jpg"));
-//        myStage.show();
-        myStage.centerOnScreen();
+        showAndTuneScene(root, getLangSource("titleAuth"), false);
     }
 
     /**
@@ -78,7 +74,7 @@ public class Main extends Application {
         return 401;
     }
 
-    protected String deleteQueryToAPI(String lastPartOfURL, JSONObject content) {
+    protected String delete(String lastPartOfURL, JSONObject content) {
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
         RequestBody body = RequestBody.create(JSON, content.toString());
 
@@ -88,7 +84,7 @@ public class Main extends Application {
         return createCallAndResponseAndExecute(request);
     }
 
-    protected String postQueryToAPI(String lastPartOfURL, JSONObject content) {
+    protected String post(String lastPartOfURL, JSONObject content) {
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
         RequestBody body = RequestBody.create(JSON, content.toString());
 
@@ -98,33 +94,10 @@ public class Main extends Application {
         return createCallAndResponseAndExecute(request);
     }
 
-    protected String getDataFromAPI(String lastPartOfURL) {
+    protected String get(String lastPartOfURL) {
         Request request = new Request.Builder().url(URL_API + lastPartOfURL)
                 .addHeader("Authorization", Credentials.basic(token.getString("token"), ""))
                 .get().build();
-        return createCallAndResponseAndExecute(request);
-    }
-
-    protected String getDataFromAPIWithBody(String lastPartOfURL, String value) {
-        HttpUrl httpUrl = new HttpUrl.Builder()
-                .scheme("https")
-                .host("flaskprojecttest.herokuapp.com")
-                .addPathSegment("api")
-                .addPathSegment(lastPartOfURL)
-                .addQueryParameter("id", value)
-                .setQueryParameter("id", value)
-                .addEncodedQueryParameter("id", value)
-                .setEncodedQueryParameter("id", value)
-                .build();
-
-        System.out.println(httpUrl.toString());
-
-        Request request = new Request.Builder()
-                .addHeader("Accept", "application/json")
-                .addHeader("Authorization", Credentials.basic(token.getString("token"), ""))
-                .addHeader("id", value)
-                .url(httpUrl)
-                .build();
         return createCallAndResponseAndExecute(request);
     }
 
@@ -247,7 +220,7 @@ public class Main extends Application {
             myStage.setMaximized(false);
             myStage.setMaximized(true);
         }
-        myStage.show();
+//        myStage.show();
     }
 
     protected String getLangSource(String key) {

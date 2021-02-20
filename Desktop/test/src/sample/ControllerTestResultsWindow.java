@@ -88,7 +88,7 @@ public class ControllerTestResultsWindow extends ControllerAuthWindow {
         buttonTestResults.setOnAction(event -> goToTestResults());
         imageMain.setOnMouseClicked(event -> goToMain());
         evaluationCriteria.setOnMouseClicked(event -> {
-            JSONArray jsonArray = new JSONArray(getDataFromAPI("test_all"));
+            JSONArray jsonArray = new JSONArray(get("test_all"));
             JSONObject jsonObject = jsonArray.getJSONObject(0);
             Alert criteria = new Alert(Alert.AlertType.INFORMATION);
             criteria.setContentText(String.valueOf(jsonObject.get("description")));
@@ -105,7 +105,7 @@ public class ControllerTestResultsWindow extends ControllerAuthWindow {
     }
 
     private void setAllText(){
-        JSONArray jsonArray = new JSONArray(getDataFromAPI("test_all"));
+        JSONArray jsonArray = new JSONArray(get("test_all"));
         JSONObject jsonObject = jsonArray.getJSONObject(0);
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");

@@ -56,7 +56,7 @@ public class ControllerAuthWindow extends Main {
             login = Login.getText().trim();
             password = Password.getText().trim();
             if (getAndSetToken() == 200) {
-                isAdmin = Boolean.valueOf(getDataFromAPI("role").trim());
+                isAdmin = Boolean.valueOf(get("role").trim());
                 if (isAdmin) {
                     goToMain();
                 } else {
